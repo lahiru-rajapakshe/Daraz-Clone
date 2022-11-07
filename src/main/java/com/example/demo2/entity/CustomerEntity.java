@@ -2,51 +2,38 @@ package com.example.demo2.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "customer", schema = "bookstoredb", catalog = "")
 public class CustomerEntity {
+    private Integer customerId;
+    private String email;
+    private String fullName;
+    private String address;
+    private String city;
+    private String country;
+    private String phone;
+    private String zipcode;
+    private String password;
+    private Timestamp registerDate;
+    private Collection<BookOrderEntity> bookOrdersByCustomerId;
+    private Collection<ReviewEntity> reviewsByCustomerId;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "customer_id", nullable = false)
-    private int customerId;
-    @Basic
-    @Column(name = "email", nullable = false, length = 64)
-    private String email;
-    @Basic
-    @Column(name = "fullName", nullable = false, length = 30)
-    private String fullName;
-    @Basic
-    @Column(name = "address", nullable = false, length = 128)
-    private String address;
-    @Basic
-    @Column(name = "city", nullable = false, length = 32)
-    private String city;
-    @Basic
-    @Column(name = "country", nullable = false, length = 64)
-    private String country;
-    @Basic
-    @Column(name = "phone", nullable = false, length = 15)
-    private String phone;
-    @Basic
-    @Column(name = "zipcode", nullable = false, length = 24)
-    private String zipcode;
-    @Basic
-    @Column(name = "password", nullable = false, length = 16)
-    private String password;
-    @Basic
-    @Column(name = "register_date", nullable = false)
-    private Timestamp registerDate;
-
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
+    @Basic
+    @Column(name = "email", nullable = false, length = 64)
     public String getEmail() {
         return email;
     }
@@ -55,6 +42,8 @@ public class CustomerEntity {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "fullName", nullable = false, length = 30)
     public String getFullName() {
         return fullName;
     }
@@ -63,6 +52,8 @@ public class CustomerEntity {
         this.fullName = fullName;
     }
 
+    @Basic
+    @Column(name = "address", nullable = false, length = 128)
     public String getAddress() {
         return address;
     }
@@ -71,6 +62,8 @@ public class CustomerEntity {
         this.address = address;
     }
 
+    @Basic
+    @Column(name = "city", nullable = false, length = 32)
     public String getCity() {
         return city;
     }
@@ -79,6 +72,8 @@ public class CustomerEntity {
         this.city = city;
     }
 
+    @Basic
+    @Column(name = "country", nullable = false, length = 64)
     public String getCountry() {
         return country;
     }
@@ -87,6 +82,8 @@ public class CustomerEntity {
         this.country = country;
     }
 
+    @Basic
+    @Column(name = "phone", nullable = false, length = 15)
     public String getPhone() {
         return phone;
     }
@@ -95,6 +92,8 @@ public class CustomerEntity {
         this.phone = phone;
     }
 
+    @Basic
+    @Column(name = "zipcode", nullable = false, length = 24)
     public String getZipcode() {
         return zipcode;
     }
@@ -103,6 +102,8 @@ public class CustomerEntity {
         this.zipcode = zipcode;
     }
 
+    @Basic
+    @Column(name = "password", nullable = false, length = 16)
     public String getPassword() {
         return password;
     }
@@ -111,6 +112,8 @@ public class CustomerEntity {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "register_date", nullable = false)
     public Timestamp getRegisterDate() {
         return registerDate;
     }
@@ -124,11 +127,29 @@ public class CustomerEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerEntity that = (CustomerEntity) o;
-        return customerId == that.customerId && Objects.equals(email, that.email) && Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(city, that.city) && Objects.equals(country, that.country) && Objects.equals(phone, that.phone) && Objects.equals(zipcode, that.zipcode) && Objects.equals(password, that.password) && Objects.equals(registerDate, that.registerDate);
+        return Objects.equals(customerId, that.customerId) && Objects.equals(email, that.email) && Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(city, that.city) && Objects.equals(country, that.country) && Objects.equals(phone, that.phone) && Objects.equals(zipcode, that.zipcode) && Objects.equals(password, that.password) && Objects.equals(registerDate, that.registerDate);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(customerId, email, fullName, address, city, country, phone, zipcode, password, registerDate);
+    }
+
+    @OneToMany(mappedBy = "customerByCustomerId")
+    public Collection<BookOrderEntity> getBookOrdersByCustomerId() {
+        return bookOrdersByCustomerId;
+    }
+
+    public void setBookOrdersByCustomerId(Collection<BookOrderEntity> bookOrdersByCustomerId) {
+        this.bookOrdersByCustomerId = bookOrdersByCustomerId;
+    }
+
+    @OneToMany(mappedBy = "customerByCustomerId")
+    public Collection<ReviewEntity> getReviewsByCustomerId() {
+        return reviewsByCustomerId;
+    }
+
+    public void setReviewsByCustomerId(Collection<ReviewEntity> reviewsByCustomerId) {
+        this.reviewsByCustomerId = reviewsByCustomerId;
     }
 }

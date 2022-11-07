@@ -2,56 +2,47 @@ package com.example.demo2.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "book_order", schema = "bookstoredb", catalog = "")
 public class BookOrderEntity {
+    private Integer orderId;
+    private Integer customerId;
+    private Timestamp orderDate;
+    private String shippingAddress;
+    private String recipientName;
+    private String recipientPhone;
+    private String paymentMethod;
+    private Double total;
+    private String status;
+    private CustomerEntity customerByCustomerId;
+    private Collection<OrderDetailEntity> orderDetailsByOrderId;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "order_id", nullable = false)
-    private int orderId;
-    @Basic
-    @Column(name = "customer_id", nullable = false)
-    private int customerId;
-    @Basic
-    @Column(name = "order_date", nullable = false)
-    private Timestamp orderDate;
-    @Basic
-    @Column(name = "shipping_address", nullable = false, length = 256)
-    private String shippingAddress;
-    @Basic
-    @Column(name = "recipient_name", nullable = false, length = 30)
-    private String recipientName;
-    @Basic
-    @Column(name = "recipient_phone", nullable = false, length = 15)
-    private String recipientPhone;
-    @Basic
-    @Column(name = "payment_method", nullable = false, length = 20)
-    private String paymentMethod;
-    @Basic
-    @Column(name = "total", nullable = false, precision = 0)
-    private double total;
-    @Basic
-    @Column(name = "status", nullable = false, length = 20)
-    private String status;
-
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
-    public int getCustomerId() {
+    @Basic
+    @Column(name = "customer_id", nullable = false)
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
+    @Basic
+    @Column(name = "order_date", nullable = false)
     public Timestamp getOrderDate() {
         return orderDate;
     }
@@ -60,6 +51,8 @@ public class BookOrderEntity {
         this.orderDate = orderDate;
     }
 
+    @Basic
+    @Column(name = "shipping_address", nullable = false, length = 256)
     public String getShippingAddress() {
         return shippingAddress;
     }
@@ -68,6 +61,8 @@ public class BookOrderEntity {
         this.shippingAddress = shippingAddress;
     }
 
+    @Basic
+    @Column(name = "recipient_name", nullable = false, length = 30)
     public String getRecipientName() {
         return recipientName;
     }
@@ -76,6 +71,8 @@ public class BookOrderEntity {
         this.recipientName = recipientName;
     }
 
+    @Basic
+    @Column(name = "recipient_phone", nullable = false, length = 15)
     public String getRecipientPhone() {
         return recipientPhone;
     }
@@ -84,6 +81,8 @@ public class BookOrderEntity {
         this.recipientPhone = recipientPhone;
     }
 
+    @Basic
+    @Column(name = "payment_method", nullable = false, length = 20)
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -92,14 +91,18 @@ public class BookOrderEntity {
         this.paymentMethod = paymentMethod;
     }
 
-    public double getTotal() {
+    @Basic
+    @Column(name = "total", nullable = false, precision = 0)
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
+    @Basic
+    @Column(name = "status", nullable = false, length = 20)
     public String getStatus() {
         return status;
     }
@@ -113,11 +116,30 @@ public class BookOrderEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookOrderEntity that = (BookOrderEntity) o;
-        return orderId == that.orderId && customerId == that.customerId && Double.compare(that.total, total) == 0 && Objects.equals(orderDate, that.orderDate) && Objects.equals(shippingAddress, that.shippingAddress) && Objects.equals(recipientName, that.recipientName) && Objects.equals(recipientPhone, that.recipientPhone) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(status, that.status);
+        return Objects.equals(orderId, that.orderId) && Objects.equals(customerId, that.customerId) && Objects.equals(orderDate, that.orderDate) && Objects.equals(shippingAddress, that.shippingAddress) && Objects.equals(recipientName, that.recipientName) && Objects.equals(recipientPhone, that.recipientPhone) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(total, that.total) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(orderId, customerId, orderDate, shippingAddress, recipientName, recipientPhone, paymentMethod, total, status);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
+    public CustomerEntity getCustomerByCustomerId() {
+        return customerByCustomerId;
+    }
+
+    public void setCustomerByCustomerId(CustomerEntity customerByCustomerId) {
+        this.customerByCustomerId = customerByCustomerId;
+    }
+
+    @OneToMany(mappedBy = "bookOrderByOrderId")
+    public Collection<OrderDetailEntity> getOrderDetailsByOrderId() {
+        return orderDetailsByOrderId;
+    }
+
+    public void setOrderDetailsByOrderId(Collection<OrderDetailEntity> orderDetailsByOrderId) {
+        this.orderDetailsByOrderId = orderDetailsByOrderId;
     }
 }

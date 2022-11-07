@@ -1,6 +1,5 @@
 package com.example.demo2.util;
 
-import com.example.demo2.entity.UsersEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;

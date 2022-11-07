@@ -6,28 +6,24 @@ import java.util.Objects;
 @Entity
 @Table(name = "lara", schema = "bookstoredb", catalog = "")
 public class LaraEntity {
+    private Integer id;
+    private String address;
+    private Integer age;
+    private String fullName;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
-    @Basic
-    @Column(name = "address", nullable = true, length = 200)
-    private String address;
-    @Basic
-    @Column(name = "age", nullable = true)
-    private Integer age;
-    @Basic
-    @Column(name = "full_name", nullable = false, length = 255)
-    private String fullName;
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "address", nullable = true, length = 200)
     public String getAddress() {
         return address;
     }
@@ -36,6 +32,8 @@ public class LaraEntity {
         this.address = address;
     }
 
+    @Basic
+    @Column(name = "age", nullable = true)
     public Integer getAge() {
         return age;
     }
@@ -44,6 +42,8 @@ public class LaraEntity {
         this.age = age;
     }
 
+    @Basic
+    @Column(name = "full_name", nullable = false, length = 255)
     public String getFullName() {
         return fullName;
     }
@@ -57,7 +57,7 @@ public class LaraEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LaraEntity that = (LaraEntity) o;
-        return id == that.id && Objects.equals(address, that.address) && Objects.equals(age, that.age) && Objects.equals(fullName, that.fullName);
+        return Objects.equals(id, that.id) && Objects.equals(address, that.address) && Objects.equals(age, that.age) && Objects.equals(fullName, that.fullName);
     }
 
     @Override
