@@ -1,8 +1,5 @@
 package com.example.demo2;
 
-import com.example.demo2.entity.Dildara;
-import com.example.demo2.entity.User;
-import com.example.demo2.entity.lara;
 import com.example.demo2.util.HibernateUtil;
 
 import org.hibernate.Session;
