@@ -1,6 +1,7 @@
 package com.example.demo2.util;
 
-import com.example.demo2.entity.Customer;
+import com.example.demo2.entity.User;
+import com.example.demo2.entity.lara;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -18,7 +19,7 @@ public abstract class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(User.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();

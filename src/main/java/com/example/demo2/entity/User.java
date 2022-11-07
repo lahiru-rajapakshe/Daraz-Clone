@@ -1,12 +1,19 @@
 package com.example.demo2.entity;
 
-public class User {
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+
+
+    @Id
+    @Column(name = "user_id")
     private Integer userId;
     private String email;
-    private String fullName;
     private String password;
-
+    private String fullName;
     public User() {
     }
 
@@ -17,6 +24,8 @@ public class User {
         this.password = password;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getUserId() {
         return userId;
     }

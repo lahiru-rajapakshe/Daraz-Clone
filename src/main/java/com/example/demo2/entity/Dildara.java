@@ -7,18 +7,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name="Customer")
-public class Customer implements Serializable {
+
+public class Dildara implements Serializable {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "full_name", nullable = false)
     private String fullName;
-    @Column(columnDefinition = "VARCHAR(200)")
-    private String address;
+
+    @Column(columnDefinition = "INT(11)")
+    private int age;
 }
