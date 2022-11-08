@@ -1,5 +1,8 @@
 package com.example.demo2;
 
+import com.example.demo2.entity.BookOrderEntity;
+import com.example.demo2.entity.CategoryEntity;
+import com.example.demo2.entity.UsersEntity;
 import com.example.demo2.util.HibernateUtil;
 
 import org.hibernate.Session;
@@ -24,15 +27,17 @@ public class CreateCustomer {
 
 
 
-            User sd = new User(1,"lahiru@gmail.com", "sd", "1232");
-            Serializable save = session.save(sd);
-            System.out.println(save+" saved");
+//            User sd = new User(1,"lahiru@gmail.com", "sd", "1232");
+//            Serializable save = session.save(sd);
+//            System.out.println(save+" saved");
 //
 
 //                        r customer2 = new r(1, "lakai sikai", "Emb");
 ////            session.save(customer);
 //            Serializable id2 = session.save(customer2);
 //            System.out.println(id2);
+
+           
 
 
             session.getTransaction().commit();

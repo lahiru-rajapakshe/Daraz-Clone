@@ -11,6 +11,16 @@ public class UsersEntity {
     private String password;
     private String fullName;
 
+    public UsersEntity() {
+    }
+
+    public UsersEntity(Integer userId, String email, String password, String fullName) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "user_id", nullable = false)

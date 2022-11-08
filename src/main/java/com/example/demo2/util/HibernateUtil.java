@@ -1,5 +1,8 @@
 package com.example.demo2.util;
 
+import com.example.demo2.entity.BookOrderEntity;
+import com.example.demo2.entity.CategoryEntity;
+import com.example.demo2.entity.UsersEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -16,7 +19,7 @@ public abstract class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(UsersEntity.class)
+                .addAnnotatedClass(CategoryEntity.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
