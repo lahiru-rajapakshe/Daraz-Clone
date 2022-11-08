@@ -9,6 +9,7 @@
     </properties>
     <root id="archive" name="demo2-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="BookStoreWebsite:war exploded" />
+      <element id="archive" name="archive.jar" />
     </root>
   </artifact>
 </component>
