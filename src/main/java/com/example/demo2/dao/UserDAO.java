@@ -36,4 +36,9 @@ public class UserDAO extends JpaDAO<UsersEntity> implements GenericDAO<UsersEnti
     public long count() {
         return 0;
     }
+
+    @Override
+    public UsersEntity create(UsersEntity usersEntity) {
+        return super.create(usersEntity);
+    }
 }
