@@ -6,9 +6,11 @@ import java.util.Objects;
 @Entity
 @Table(name = "users", schema = "bookstoredb", catalog = "")
 public class UsersEntity {
+    @Column(name = "user_id")
     private Integer userId;
     private String email;
     private String password;
+    @Column(name = "full_name")
     private String fullName;
 
     public UsersEntity() {

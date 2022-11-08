@@ -1,8 +1,14 @@
 package com.example.demo2.dao;
 
+import com.example.demo2.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javax.persistence.EntityManager;
 
-public class JpaDAO<T> {
+public class JpaDAO<E> {
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+    Session session = sf.openSession();
     protected EntityManager entityManager;
 
     public JpaDAO(EntityManager entityManager) {
@@ -10,15 +16,22 @@ public class JpaDAO<T> {
         this.entityManager = entityManager;
     }
 
-    public T create(T t){
-        entityManager.getTransaction().begin();
-        entityManager.persist(t);
-        entityManager.flush();
-        entityManager.refresh(t);
 
-        entityManager.getTransaction().commit();
-        return  t;
+    public E create(E entity) {
+        session.beginTransaction();
+        session.save(entity);
+        session.flush();
+        session.refresh(entity);
+        session.getTransaction().commit();
+        return entity;
     }
 
+    public E update(E entity) {
+        session.beginTransaction();
+        Object merge = session.merge(entity);
+        session.getTransaction().commit();
+
+        return entity;
+    }
 
 }

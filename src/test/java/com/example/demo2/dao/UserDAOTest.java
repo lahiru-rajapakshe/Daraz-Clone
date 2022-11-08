@@ -4,6 +4,7 @@ import com.example.demo2.entity.UsersEntity;
 import com.example.demo2.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.AfterClass;
 import org.junit.jupiter.api.*;
 
 import javax.persistence.EntityManager;
@@ -23,6 +24,11 @@ public class UserDAOTest {
     @AfterEach
     public void tearDown() {
     }
+    @AfterClass
+    static void g(){
+
+
+    }
 
     @BeforeAll
     public static void before() {
@@ -32,6 +38,7 @@ public class UserDAOTest {
     @AfterAll
     public static void after() {
         System.out.println("testing is over");
+
     }
 
     @Test
@@ -59,7 +66,7 @@ public class UserDAOTest {
 
         try {
             session.beginTransaction();
-            UsersEntity usersEntity = new UsersEntity(99, "lara@gmail.com", "1111", "lara");
+            UsersEntity usersEntity = new UsersEntity( 23,"lara@gma2il.com", "11121", "la2ra");
             Serializable save = session.save(usersEntity);
 
             assertTrue(usersEntity.getUserId() > 1);
