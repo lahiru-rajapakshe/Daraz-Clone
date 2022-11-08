@@ -1,11 +1,11 @@
 package com.example.demo2.dao;
 
-import com.example.demo2.entity.UsersEntity;
+import com.example.demo2.entity.Users;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class UserDAO extends JpaDAO<UsersEntity> implements GenericDAO<UsersEntity>{
+public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
 
 
     public UserDAO(EntityManager entityManager) {
@@ -13,14 +13,14 @@ public class UserDAO extends JpaDAO<UsersEntity> implements GenericDAO<UsersEnti
     }
 
     @Override
-    public UsersEntity update(UsersEntity usersEntity) {
-        return super.update(usersEntity);
+    public Users update(Users users) {
+        return super.update(users);
 
 
     }
 
     @Override
-    public UsersEntity get(Object id) {
+    public Users get(Object id) {
         return null;
     }
 
@@ -30,7 +30,7 @@ public class UserDAO extends JpaDAO<UsersEntity> implements GenericDAO<UsersEnti
     }
 
     @Override
-    public List<UsersEntity> listAll() {
+    public List<Users> listAll() {
         return null;
     }
 
@@ -40,7 +40,8 @@ public class UserDAO extends JpaDAO<UsersEntity> implements GenericDAO<UsersEnti
     }
 
     @Override
-    public UsersEntity create(UsersEntity usersEntity) {
-        return super.create(usersEntity);
+    public Users create(Users users) {
+
+        return super.create(users);
     }
 }

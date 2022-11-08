@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users", schema = "bookstoredb", catalog = "")
-public class UsersEntity {
+//@Table(name = "users", schema = "bookstoredb")
+public class Users {
     @Column(name = "user_id")
     private Integer userId;
     private String email;
@@ -13,10 +13,10 @@ public class UsersEntity {
     @Column(name = "full_name")
     private String fullName;
 
-    public UsersEntity() {
+    public Users() {
     }
 
-    public UsersEntity(Integer userId, String email, String password, String fullName) {
+    public Users(Integer userId, String email, String password, String fullName) {
         this.userId = userId;
         this.email = email;
         this.password = password;
@@ -68,7 +68,7 @@ public class UsersEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersEntity that = (UsersEntity) o;
+        Users that = (Users) o;
         return Objects.equals(userId, that.userId) && Objects.equals(email, that.email) && Objects.equals(password, that.password) && Objects.equals(fullName, that.fullName);
     }
 

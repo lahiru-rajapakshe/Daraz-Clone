@@ -1,15 +1,12 @@
 package com.example.demo2;
 
-import com.example.demo2.entity.BookOrderEntity;
-import com.example.demo2.entity.CategoryEntity;
-import com.example.demo2.entity.UsersEntity;
+import com.example.demo2.entity.LaraEntity;
+import com.example.demo2.entity.Users;
+import com.example.demo2.entity.lara;
 import com.example.demo2.util.HibernateUtil;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-
-import java.io.Serializable;
 
 public class CreateCustomer {
 
@@ -37,8 +34,18 @@ public class CreateCustomer {
 //            Serializable id2 = session.save(customer2);
 //            System.out.println(id2);
 
-           
+//
+//            lara lara = new lara(13, "jpa", "pink", 11);
+//            session.save(lara);
+//            System.out.println(lara);
 
+//            LaraEntity laraEntity = new LaraEntity(29, "dsjh", 124, "Hibernate");
+//            session.save(laraEntity);
+//            System.out.println(laraEntity);
+
+            Users users = new Users(1, "email", "22", "lahata");
+            session.save(users);
+            System.out.println(users);
 
             session.getTransaction().commit();
 

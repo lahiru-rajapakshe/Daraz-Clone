@@ -1,6 +1,6 @@
 package com.example.demo2.dao;
 
-import com.example.demo2.entity.UsersEntity;
+import com.example.demo2.entity.Users;
 import com.example.demo2.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,14 +8,13 @@ import org.junit.AfterClass;
 import org.junit.jupiter.api.*;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import java.io.Serializable;
 
 import static org.junit.Assert.*;
 
 public class UserDAOTest {
+    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    Session session = sessionFactory.openSession();
 
     @BeforeEach
     void setUp() {
@@ -61,16 +60,18 @@ public class UserDAOTest {
 //
 //        assertTrue(usersEntity.getUserId()>0 );
 
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
+
 
         try {
-            session.beginTransaction();
-            UsersEntity usersEntity = new UsersEntity( 23,"lara@gma2il.com", "11121", "la2ra");
-            Serializable save = session.save(usersEntity);
+            Users users = new Users(82, "re", "26", "UAE");
 
-            assertTrue(usersEntity.getUserId() > 1);
-            session.beginTransaction().commit();
+
+            session.save(users);
+            System.out.println(users);
+
+            session.getTransaction().commit();
+
+            assertTrue(users.getUserId() > 1);
         } catch (Throwable t) {
             if (session != null & session.getTransaction() != null) {
                 session.getTransaction().rollback();
@@ -80,5 +81,25 @@ public class UserDAOTest {
             sessionFactory.close();
         }
 
+    }
+
+    @Test
+    void update() {
+
+        try {
+            Users users = new Users(10, "dilskup", "26", "UAE");
+
+            System.out.println(users);
+//            users=UserDAO.update(users);
+
+
+        } catch (Throwable t) {
+            if (session != null & session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            session.close();
+            sessionFactory.close();
+        }
     }
 }

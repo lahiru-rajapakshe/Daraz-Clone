@@ -5,13 +5,13 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "order_detail", schema = "bookstoredb", catalog = "")
-public class OrderDetailEntity {
+public class OrderDetail {
     private Integer orderId;
     private Integer bookId;
     private Integer quantity;
     private Double subtotal;
-    private BookOrderEntity bookOrderByOrderId;
-    private BookEntity bookByBookId;
+    private BookOrder bookOrderByOrderId;
+    private Book bookByBookId;
 
     @Basic
     @Column(name = "order_id", nullable = true)
@@ -57,7 +57,7 @@ public class OrderDetailEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderDetailEntity that = (OrderDetailEntity) o;
+        OrderDetail that = (OrderDetail) o;
         return Objects.equals(orderId, that.orderId) && Objects.equals(bookId, that.bookId) && Objects.equals(quantity, that.quantity) && Objects.equals(subtotal, that.subtotal);
     }
 
@@ -68,21 +68,21 @@ public class OrderDetailEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
-    public BookOrderEntity getBookOrderByOrderId() {
+    public BookOrder getBookOrderByOrderId() {
         return bookOrderByOrderId;
     }
 
-    public void setBookOrderByOrderId(BookOrderEntity bookOrderByOrderId) {
+    public void setBookOrderByOrderId(BookOrder bookOrderByOrderId) {
         this.bookOrderByOrderId = bookOrderByOrderId;
     }
 
     @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "book_id")
-    public BookEntity getBookByBookId() {
+    public Book getBookByBookId() {
         return bookByBookId;
     }
 
-    public void setBookByBookId(BookEntity bookByBookId) {
+    public void setBookByBookId(Book bookByBookId) {
         this.bookByBookId = bookByBookId;
     }
 }

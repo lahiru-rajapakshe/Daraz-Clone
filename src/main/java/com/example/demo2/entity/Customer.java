@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "customer", schema = "bookstoredb", catalog = "")
-public class CustomerEntity {
+public class Customer {
     private Integer customerId;
     private String email;
     private String fullName;
@@ -18,8 +18,8 @@ public class CustomerEntity {
     private String zipcode;
     private String password;
     private Timestamp registerDate;
-    private Collection<BookOrderEntity> bookOrdersByCustomerId;
-    private Collection<ReviewEntity> reviewsByCustomerId;
+    private Collection<BookOrder> bookOrdersByCustomerId;
+    private Collection<Review> reviewsByCustomerId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -126,7 +126,7 @@ public class CustomerEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CustomerEntity that = (CustomerEntity) o;
+        Customer that = (Customer) o;
         return Objects.equals(customerId, that.customerId) && Objects.equals(email, that.email) && Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(city, that.city) && Objects.equals(country, that.country) && Objects.equals(phone, that.phone) && Objects.equals(zipcode, that.zipcode) && Objects.equals(password, that.password) && Objects.equals(registerDate, that.registerDate);
     }
 
@@ -136,20 +136,20 @@ public class CustomerEntity {
     }
 
     @OneToMany(mappedBy = "customerByCustomerId")
-    public Collection<BookOrderEntity> getBookOrdersByCustomerId() {
+    public Collection<BookOrder> getBookOrdersByCustomerId() {
         return bookOrdersByCustomerId;
     }
 
-    public void setBookOrdersByCustomerId(Collection<BookOrderEntity> bookOrdersByCustomerId) {
+    public void setBookOrdersByCustomerId(Collection<BookOrder> bookOrdersByCustomerId) {
         this.bookOrdersByCustomerId = bookOrdersByCustomerId;
     }
 
     @OneToMany(mappedBy = "customerByCustomerId")
-    public Collection<ReviewEntity> getReviewsByCustomerId() {
+    public Collection<Review> getReviewsByCustomerId() {
         return reviewsByCustomerId;
     }
 
-    public void setReviewsByCustomerId(Collection<ReviewEntity> reviewsByCustomerId) {
+    public void setReviewsByCustomerId(Collection<Review> reviewsByCustomerId) {
         this.reviewsByCustomerId = reviewsByCustomerId;
     }
 }

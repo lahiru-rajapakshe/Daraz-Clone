@@ -6,10 +6,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "category", schema = "bookstoredb", catalog = "")
-public class CategoryEntity {
+public class Category {
     private Integer categoryId;
     private String name;
-    private Collection<BookEntity> booksByCategoryId;
+    private Collection<Book> booksByCategoryId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -36,7 +36,7 @@ public class CategoryEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CategoryEntity that = (CategoryEntity) o;
+        Category that = (Category) o;
         return Objects.equals(categoryId, that.categoryId) && Objects.equals(name, that.name);
     }
 
@@ -46,11 +46,11 @@ public class CategoryEntity {
     }
 
     @OneToMany(mappedBy = "categoryByCategoryId")
-    public Collection<BookEntity> getBooksByCategoryId() {
+    public Collection<Book> getBooksByCategoryId() {
         return booksByCategoryId;
     }
 
-    public void setBooksByCategoryId(Collection<BookEntity> booksByCategoryId) {
+    public void setBooksByCategoryId(Collection<Book> booksByCategoryId) {
         this.booksByCategoryId = booksByCategoryId;
     }
 }

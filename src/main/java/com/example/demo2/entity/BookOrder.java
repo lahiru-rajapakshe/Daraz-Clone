@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "book_order", schema = "bookstoredb", catalog = "")
-public class BookOrderEntity {
+public class BookOrder {
     private Integer orderId;
     private Integer customerId;
     private Timestamp orderDate;
@@ -17,8 +17,8 @@ public class BookOrderEntity {
     private String paymentMethod;
     private Double total;
     private String status;
-    private CustomerEntity customerByCustomerId;
-    private Collection<OrderDetailEntity> orderDetailsByOrderId;
+    private Customer customerByCustomerId;
+    private Collection<OrderDetail> orderDetailsByOrderId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -115,7 +115,7 @@ public class BookOrderEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookOrderEntity that = (BookOrderEntity) o;
+        BookOrder that = (BookOrder) o;
         return Objects.equals(orderId, that.orderId) && Objects.equals(customerId, that.customerId) && Objects.equals(orderDate, that.orderDate) && Objects.equals(shippingAddress, that.shippingAddress) && Objects.equals(recipientName, that.recipientName) && Objects.equals(recipientPhone, that.recipientPhone) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(total, that.total) && Objects.equals(status, that.status);
     }
 
@@ -126,20 +126,20 @@ public class BookOrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-    public CustomerEntity getCustomerByCustomerId() {
+    public Customer getCustomerByCustomerId() {
         return customerByCustomerId;
     }
 
-    public void setCustomerByCustomerId(CustomerEntity customerByCustomerId) {
+    public void setCustomerByCustomerId(Customer customerByCustomerId) {
         this.customerByCustomerId = customerByCustomerId;
     }
 
     @OneToMany(mappedBy = "bookOrderByOrderId")
-    public Collection<OrderDetailEntity> getOrderDetailsByOrderId() {
+    public Collection<OrderDetail> getOrderDetailsByOrderId() {
         return orderDetailsByOrderId;
     }
 
-    public void setOrderDetailsByOrderId(Collection<OrderDetailEntity> orderDetailsByOrderId) {
+    public void setOrderDetailsByOrderId(Collection<OrderDetail> orderDetailsByOrderId) {
         this.orderDetailsByOrderId = orderDetailsByOrderId;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "review", schema = "bookstoredb", catalog = "")
-public class ReviewEntity {
+public class Review {
     private Integer reviewId;
     private Integer bookId;
     private Integer customerId;
@@ -14,8 +14,8 @@ public class ReviewEntity {
     private String headline;
     private String comment;
     private Timestamp reviewTime;
-    private BookEntity bookByBookId;
-    private CustomerEntity customerByCustomerId;
+    private Book bookByBookId;
+    private Customer customerByCustomerId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -92,7 +92,7 @@ public class ReviewEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReviewEntity that = (ReviewEntity) o;
+        Review that = (Review) o;
         return Objects.equals(reviewId, that.reviewId) && Objects.equals(bookId, that.bookId) && Objects.equals(customerId, that.customerId) && Objects.equals(rating, that.rating) && Objects.equals(headline, that.headline) && Objects.equals(comment, that.comment) && Objects.equals(reviewTime, that.reviewTime);
     }
 
@@ -103,21 +103,21 @@ public class ReviewEntity {
 
     @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "book_id", nullable = false)
-    public BookEntity getBookByBookId() {
+    public Book getBookByBookId() {
         return bookByBookId;
     }
 
-    public void setBookByBookId(BookEntity bookByBookId) {
+    public void setBookByBookId(Book bookByBookId) {
         this.bookByBookId = bookByBookId;
     }
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-    public CustomerEntity getCustomerByCustomerId() {
+    public Customer getCustomerByCustomerId() {
         return customerByCustomerId;
     }
 
-    public void setCustomerByCustomerId(CustomerEntity customerByCustomerId) {
+    public void setCustomerByCustomerId(Customer customerByCustomerId) {
         this.customerByCustomerId = customerByCustomerId;
     }
 }

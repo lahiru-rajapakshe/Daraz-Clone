@@ -4,12 +4,22 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "lara", schema = "bookstoredb", catalog = "")
+//@Table(name = "lara", schema = "bookstoredb", catalog = "")
 public class LaraEntity {
     private Integer id;
     private String address;
     private Integer age;
     private String fullName;
+
+    public LaraEntity() {
+    }
+
+    public LaraEntity(Integer id, String address, Integer age, String fullName) {
+        this.id = id;
+        this.address = address;
+        this.age = age;
+        this.fullName = fullName;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "book", schema = "bookstoredb", catalog = "")
-public class BookEntity {
+public class Book {
     private Integer bookId;
     private String book;
     private String author;
@@ -20,9 +20,9 @@ public class BookEntity {
     private Date publishDate;
     private Timestamp lastUpdateTime;
     private Integer categoryId;
-    private CategoryEntity categoryByCategoryId;
-    private Collection<OrderDetailEntity> orderDetailsByBookId;
-    private Collection<ReviewEntity> reviewsByBookId;
+    private Category categoryByCategoryId;
+    private Collection<OrderDetail> orderDetailsByBookId;
+    private Collection<Review> reviewsByBookId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -129,7 +129,7 @@ public class BookEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookEntity that = (BookEntity) o;
+        Book that = (Book) o;
         return Objects.equals(bookId, that.bookId) && Objects.equals(book, that.book) && Objects.equals(author, that.author) && Objects.equals(description, that.description) && Objects.equals(isbn, that.isbn) && Arrays.equals(image, that.image) && Objects.equals(price, that.price) && Objects.equals(publishDate, that.publishDate) && Objects.equals(lastUpdateTime, that.lastUpdateTime) && Objects.equals(categoryId, that.categoryId);
     }
 
@@ -142,29 +142,29 @@ public class BookEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
-    public CategoryEntity getCategoryByCategoryId() {
+    public Category getCategoryByCategoryId() {
         return categoryByCategoryId;
     }
 
-    public void setCategoryByCategoryId(CategoryEntity categoryByCategoryId) {
+    public void setCategoryByCategoryId(Category categoryByCategoryId) {
         this.categoryByCategoryId = categoryByCategoryId;
     }
 
     @OneToMany(mappedBy = "bookByBookId")
-    public Collection<OrderDetailEntity> getOrderDetailsByBookId() {
+    public Collection<OrderDetail> getOrderDetailsByBookId() {
         return orderDetailsByBookId;
     }
 
-    public void setOrderDetailsByBookId(Collection<OrderDetailEntity> orderDetailsByBookId) {
+    public void setOrderDetailsByBookId(Collection<OrderDetail> orderDetailsByBookId) {
         this.orderDetailsByBookId = orderDetailsByBookId;
     }
 
     @OneToMany(mappedBy = "bookByBookId")
-    public Collection<ReviewEntity> getReviewsByBookId() {
+    public Collection<Review> getReviewsByBookId() {
         return reviewsByBookId;
     }
 
-    public void setReviewsByBookId(Collection<ReviewEntity> reviewsByBookId) {
+    public void setReviewsByBookId(Collection<Review> reviewsByBookId) {
         this.reviewsByBookId = reviewsByBookId;
     }
 }
