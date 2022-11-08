@@ -11,21 +11,14 @@
   <title>Daraz-clone App</title>
 </head>
 <body>
-
-<div align="center">
-  <h1>This is the header :Logo ,Search , menu</h1>
-
-</div>
+<jsp:directive.include file="header.jsp" />
 
 <div align="center">
   <h1>Please Login :  </h1>
 
 </div>
 
-<div align="center">
-  <h1>Footer | copyright , About , Contact </h1>
-  <h1></h1>
-</div>
+<jsp:directive.include file="Footer.jsp" />
 
 </body>
 </html>
