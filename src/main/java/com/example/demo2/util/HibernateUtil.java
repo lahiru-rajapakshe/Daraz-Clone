@@ -19,7 +19,7 @@ public abstract class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(CategoryEntity.class)
+                .addAnnotatedClass(UsersEntity.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
