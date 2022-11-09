@@ -34,4 +34,10 @@ public class JpaDAO<E> {
         return entity;
     }
 
+    public E find(Class<E> type,Object id ){
+        E entity = session.find(type, id);
+        session.refresh(entity);
+        return entity;
+    }
+
 }
