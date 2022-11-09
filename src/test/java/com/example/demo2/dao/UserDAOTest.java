@@ -102,4 +102,9 @@ public class UserDAOTest {
             sessionFactory.close();
         }
     }
+
+    @Test
+    void get() {
+
+    }
 }

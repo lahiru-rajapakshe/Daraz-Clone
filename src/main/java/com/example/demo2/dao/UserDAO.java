@@ -22,7 +22,9 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
     @Override
     public Users get(Object userId)
     {
-        return null;
+
+        return super.find(Users.class,userId);
+
     }
 
     @Override
