@@ -14,5 +14,7 @@
 <jsp:directive.include file="header.jsp" />
 <h2 align="center">Administrative Dashboard</h2>
 
+<jsp:directive.include file="footer.jsp" />
+
 </body>
 </html>
