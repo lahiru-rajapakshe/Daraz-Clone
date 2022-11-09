@@ -152,6 +152,9 @@ public class UserDAOTest extends JpaDAO {
     @Test
     public void testListAll() {
        List<Users> listUsers= userDAO.listAll();
+        for (Users user: listUsers) {
+            System.out.println(user.getEmail());
+        }
        assertTrue(listUsers.size()>0);
 
 

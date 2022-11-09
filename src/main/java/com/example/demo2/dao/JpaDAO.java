@@ -59,4 +59,11 @@ public class JpaDAO<E> {
 
         
     }
+
+    public long contWithNamedQuery(String queryName){
+        Query query = session.createNamedQuery(queryName);
+        return  (long) query.getSingleResult();
+        
+
+    }
 }

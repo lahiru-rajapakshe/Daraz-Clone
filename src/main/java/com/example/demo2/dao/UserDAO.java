@@ -38,7 +38,8 @@ super.delete(Users.class,userId);
 
     @Override
     public long count() {
-        return 0;
+
+        super.findWithNamedQuery("Users.countAll");
     }
 
     @Override
