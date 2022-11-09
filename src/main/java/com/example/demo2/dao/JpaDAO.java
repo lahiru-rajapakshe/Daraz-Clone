@@ -3,8 +3,10 @@ package com.example.demo2.dao;
 import com.example.demo2.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class JpaDAO<E> {
     SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -50,5 +52,11 @@ public class JpaDAO<E> {
         session.getTransaction().commit();
 
 
+    }
+    public List<E> findWithNamedQuery(String queryName){
+        Query query = session.createNamedQuery(queryName);
+        return query.getResultList();
+
+        
     }
 }

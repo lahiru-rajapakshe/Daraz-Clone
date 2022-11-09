@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.jupiter.api.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import java.io.Serializable;
 
 import static org.junit.Assert.*;
@@ -137,6 +138,13 @@ public class UserDAOTest extends JpaDAO {
         Integer userId= 5;
         UserDAO.delete(userId);
 
+
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void testDeleteNonExistusers(){
+        Integer userId=55;
+        userDAO.delete(userId);
 
     }
 }

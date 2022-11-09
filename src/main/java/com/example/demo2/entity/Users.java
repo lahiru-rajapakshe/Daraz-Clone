@@ -5,6 +5,11 @@ import java.util.Objects;
 
 @Entity
 //@Table(name = "users", schema = "bookstoredb")
+@NamedQueries(
+        {
+                @NamedQuery(name = "Users.findAll", query= "SELECT u FROM  Users u ORDER BY u.fullName ")
+        }
+)
 public class Users {
     @Column(name = "user_id")
     private Integer userId;
