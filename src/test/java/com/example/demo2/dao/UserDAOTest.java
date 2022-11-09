@@ -12,9 +12,14 @@ import java.io.Serializable;
 
 import static org.junit.Assert.*;
 
-public class UserDAOTest {
+public class UserDAOTest extends JpaDAO {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session session = sessionFactory.openSession();
+
+
+    public UserDAOTest(EntityManager entityManager) {
+        super(entityManager);
+    }
 
     @BeforeEach
     void setUp() {
@@ -124,5 +129,14 @@ public class UserDAOTest {
         }
 
         assertNull(users);
+    }
+
+
+    @Test
+    void testDelete() {
+        Integer userId= 5;
+        UserDAO.delete(userId);
+
+
     }
 }
