@@ -104,7 +104,7 @@ public class UserDAOTest {
     }
 
     @Test
-    void get() {
+   public  void get() {
         Integer userId = 1;
         Users user = UserDAO.get(userId);
         if(user != null){
@@ -115,7 +115,7 @@ public class UserDAOTest {
     }
 
     @Test
-    public void testGetUsersNotFound(){
+    public static void testGetUsersNotFound(){
         Integer userId=99;
         Users users = UserDAO.get(userId);
 

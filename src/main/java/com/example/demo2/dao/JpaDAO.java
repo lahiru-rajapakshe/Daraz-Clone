@@ -36,8 +36,19 @@ public class JpaDAO<E> {
 
     public E find(Class<E> type,Object id ){
         E entity = session.find(type, id);
-        session.refresh(entity);
+        if(entity != null){
+            session.refresh(entity);
+        }
         return entity;
     }
 
+    public void delete (Class<E> type, Object id){
+        session.getTransaction().begin();
+        E reference = session.getReference(type, id);
+        session.remove(reference);
+
+        session.getTransaction().commit();
+
+
+    }
 }
