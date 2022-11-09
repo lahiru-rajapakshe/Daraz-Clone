@@ -13,7 +13,7 @@
 <body>
 <div align="center">
     <div>
-        <img src="/images/BookstoreLogo.png" alt="Logo">
+        <img src="../images/BookstoreLogo.png" alt="Logo">
     </div>
     <div>
         <input type="text" name="keyword" size="50">
