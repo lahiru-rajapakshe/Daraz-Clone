@@ -160,4 +160,11 @@ public class UserDAOTest extends JpaDAO {
 
 
     }
+
+    @Test
+    public void count() {
+        long totalUsers=userDAO.count();
+        assertEquals(4,totalUsers);
+
+    }
 }
