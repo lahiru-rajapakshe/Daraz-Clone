@@ -32,7 +32,8 @@ super.delete(Users.class,userId);
 
     @Override
     public List<Users> listAll() {
-        return null;
+
+        return  super.findWithNamedQuery("Users.findAll");
     }
 
     @Override
