@@ -23,8 +23,9 @@ public class UserDAOTest {
     @AfterEach
     public void tearDown() {
     }
+
     @AfterClass
-    static void g(){
+    static void g() {
 
 
     }
@@ -59,7 +60,6 @@ public class UserDAOTest {
 //        entityManagerFactory.close();
 //
 //        assertTrue(usersEntity.getUserId()>0 );
-
 
 
         try {
@@ -105,6 +105,24 @@ public class UserDAOTest {
 
     @Test
     void get() {
+        Integer userId = 1;
+        Users user = UserDAO.get(userId);
+        if(user != null){
+            System.out.println(user.getEmail()); // checking the nullable or not
+        }
+        assertNotNull(user);
 
+    }
+
+    @Test
+    public void testGetUsersNotFound(){
+        Integer userId=99;
+        Users users = UserDAO.get(userId);
+
+        if(users == null){
+            System.out.println("user is is null");
+        }
+
+        assertNull(users);
     }
 }

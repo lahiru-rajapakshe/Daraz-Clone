@@ -20,11 +20,9 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
     }
 
     @Override
-    public Users get(Object userId)
+    public static Users get(Object userId)
     {
-
         return super.find(Users.class,userId);
-
     }
 
     @Override
@@ -44,7 +42,6 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
 
     @Override
     public Users create(Users users) {
-
         return super.create(users);
     }
 }
