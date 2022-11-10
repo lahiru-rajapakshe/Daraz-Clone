@@ -28,12 +28,12 @@
 
             <tr>
                 <td align="right">FullName : </td>
-                <td  align="left"><input type="text" name="fullName" size="20" /></td>
+                <td  align="left"><input id="fullName" type="text" name="fullName" size="20" /></td>
             </tr>
 
             <tr>
                 <td align="right">Password : </td>
-                <td  align="left"><input type="password" name="password" size="20" /></td>
+                <td  align="left"><input id="password" type="password" name="password" size="20" /></td>
             </tr>
 <tr>
     <td>&nbsp;</td>
@@ -41,7 +41,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Save" />
-                    <input type="button" value="Cancel" />
+                    <input type="button" value="Cancel" onclick="javascript:history.go(-1);"/>
                 </td>
 
             </tr>
@@ -58,11 +58,29 @@
 <script type="text/javascript">
 function validateFormInput(){
     var fieldEmail= document.getElementById("email");
+    var fieldFullName = document.getElementById("fullName");
+    var fieldPassword = document.getElementById("password");
+
+
     if(fieldEmail.value.length == 0){
         alert("Email is Required !");
         fieldEmail.focus();
         return false;
     }
+    if(fieldFullName.value.length == 0){
+        alert("Full name is Required !");
+        fieldFullName.focus();
+        return false;
+    }
+
+    if(fieldPassword.value.length == 0){
+        alert("Password is Required !");
+        fieldPassword.focus();
+        return false;
+    }
+    return  true;
+
+
 }
 </script>
 </html>
