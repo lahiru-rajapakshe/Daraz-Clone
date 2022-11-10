@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AdminHomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String homepage= "index.jsp";
+        String homepage= "indexc.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
         System.out.println("Admin home");
         dispatcher.forward(request,response);

@@ -13,16 +13,7 @@
 <body>
 <jsp:directive.include file="header.jsp"/>
 
-<h2 align="center">Welcome, Admin <a href="logout">logout</a></h2>
 
-<div align="center">
-    <a href="users">Users</a> |
-    <a href="categories">Categories</a> |
-    <a href="books">Books</a> |
-    <a href="customers">Customers</a> |
-    <a href="reviews">Reviews</a> |
-    <a href="orders">Orders</a> |
-</div>
 <h2 align="center">Administrative Dashboard</h2>
 <hr width="60%"/>
 <div align="center">

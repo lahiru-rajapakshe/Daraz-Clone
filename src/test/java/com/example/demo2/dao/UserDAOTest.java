@@ -110,61 +110,61 @@ public class UserDAOTest extends JpaDAO {
         }
     }
 
-    @Test
-   public  void get() {
-        Integer userId = 1;
-        Users user = UserDAO.get(userId);
-        if(user != null){
-            System.out.println(user.getEmail()); // checking the nullable or not
-        }
-        assertNotNull(user);
+//    @Test
+//   public  void get() {
+//        Integer userId = 1;
+//        Users user = UserDAO.get(userId);
+//        if(user != null){
+//            System.out.println(user.getEmail()); // checking the nullable or not
+//        }
+//        assertNotNull(user);
+//
+//    }
 
-    }
-
-    @Test
-    public static void testGetUsersNotFound(){
-        Integer userId=99;
-        Users users = UserDAO.get(userId);
-
-        if(users == null){
-            System.out.println("user is is null");
-        }
-
-        assertNull(users);
-    }
-
-
-    @Test
-    void testDelete() {
-        Integer userId= 5;
-        UserDAO.delete(userId);
+//    @Test
+//    public static void testGetUsersNotFound(){
+//        Integer userId=99;
+//        Users users = UserDAO.get(userId);
+//
+//        if(users == null){
+//            System.out.println("user is is null");
+//        }
+//
+//        assertNull(users);
+//    }
 
 
-    }
+//    @Test
+//    void testDelete() {
+//        Integer userId= 5;
+//        UserDAO.delete(userId);
+//
+//
+//    }
 
-    @Test(expected = EntityNotFoundException.class)
-    public void testDeleteNonExistusers(){
-        Integer userId=55;
-        userDAO.delete(userId);
+//    @Test(expected = EntityNotFoundException.class)
+//    public void testDeleteNonExistusers(){
+//        Integer userId=55;
+//        userDAO.delete(userId);
+//
+//    }
 
-    }
+//    @Test
+//    public void testListAll() {
+//       List<Users> listUsers= userDAO.listAll();
+//        for (Users user: listUsers) {
+//            System.out.println(user.getEmail());
+//        }
+//       assertTrue(listUsers.size()>0);
+//
+//
+//
+//    }
 
-    @Test
-    public void testListAll() {
-       List<Users> listUsers= userDAO.listAll();
-        for (Users user: listUsers) {
-            System.out.println(user.getEmail());
-        }
-       assertTrue(listUsers.size()>0);
-
-
-
-    }
-
-    @Test
-    public void count() {
-        long totalUsers=userDAO.count();
-        assertEquals(4,totalUsers);
-
-    }
+//    @Test
+//    public void count() {
+//        long totalUsers=userDAO.count();
+//        assertEquals(4,totalUsers);
+//
+//    }
 }
