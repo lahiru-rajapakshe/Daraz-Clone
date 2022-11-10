@@ -39,7 +39,7 @@
 
 <h2 align="center">User Management</h2>
 <div align="center">
-    <a href="">Create new User</a>
+    <a href="user_form.jsp">Create new User</a>
 </div>
 <br>
 
