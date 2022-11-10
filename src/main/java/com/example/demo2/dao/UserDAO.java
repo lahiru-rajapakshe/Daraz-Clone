@@ -3,6 +3,9 @@ package com.example.demo2.dao;
 import com.example.demo2.entity.Users;
 
 import javax.persistence.EntityManager;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
@@ -34,6 +37,7 @@ super.delete(Users.class,userId);
     public List<Users> listAll() {
 
         return  super.findWithNamedQuery("Users.findAll");
+
     }
 
     @Override
