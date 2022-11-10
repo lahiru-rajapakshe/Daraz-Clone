@@ -1,3 +1,30 @@
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>
+
+<%
+    String user_id = request.getParameter("user_id");
+    String drivername= "com.mysql.cj.jdbc.Driver";
+    String connectionUrl="jdbc:mysql://localhost:3306/";
+    String dbName="bookstoredb";
+    String userName="root";
+    String password="Addy@789**$";
+
+    try{
+        Class.forName(drivername);
+    }catch (ClassNotFoundException e){
+        e.printStackTrace();
+    }
+
+    Connection connection=null;
+    Statement statement=null;
+    ResultSet resultSet=null;
+
+
+
+%>
+
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
@@ -17,23 +44,46 @@
 <br>
 
 <div align="center">
-<table border="1">
+<table border="1" cellpadding="5">
     <tr>
-        <th>Index</th>
-        <th>Id</th>
+
+        <th>User ID</th>
         <th>Email</th>
         <th>Full Name</th>
-        <th>Actions</th>
+   <th>Action </th>
 
     </tr>
-    <c:forEach var="user" items="${lilstUsers}" varStatus="status">
-<tr>
 
-    <td>${status.index}</td>
-    <td>${status.id}</td>
-</tr>
-    </c:forEach>
+
+    <%
+        try{
+            connection=DriverManager.getConnection(connectionUrl+dbName,userName,password);
+            statement=connection.createStatement();
+            String sql="Select * from Users";
+
+            resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+    %>
+
+    <td><%= resultSet.getString("user_id") %></td>
+    <td><%= resultSet.getString("email") %></td>
+    <td><%= resultSet.getString("full_name") %></td>
+<td><a href="">Edit</a>&nbsp;
+    <a href="">Delete</a>
+
+</td>
+
+    </tr>
+    }
+    <%
+            }
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    %>
 </table>
+
 </div>
 
 <div align="center">
