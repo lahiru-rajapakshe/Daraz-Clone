@@ -18,12 +18,12 @@
 <hr width="60%"/>
 <div align="center">
 
-    <form action="create_user" method="post">
+    <form action="create_user" method="post"  onsubmit="return validateFormInput()"  >
 
         <table>
             <tr>
                 <td align="right">Email : </td>
-                <td align="left"><input type="text" name="email" size="20" /></td>
+                <td align="left"><input id="email" type="text" name="email" size="20" /></td>
             </tr>
 
             <tr>
@@ -55,4 +55,14 @@
 <jsp:directive.include file="footer.jsp"/>
 
 </body>
+<script type="text/javascript">
+function validateFormInput(){
+    var fieldEmail= document.getElementById("email");
+    if(fieldEmail.value.length == 0){
+        alert("Email is Required !");
+        fieldEmail.focus();
+        return false;
+    }
+}
+</script>
 </html>
