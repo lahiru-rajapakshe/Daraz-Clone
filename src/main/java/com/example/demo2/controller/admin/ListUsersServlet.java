@@ -15,11 +15,11 @@ public class ListUsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        UserServices userServices = new UserServices();
+        UserServices userServices = new UserServices(request, response);
 //        List<Users> listUsers = userServices.listUser();
 //        request.setAttribute("listUsers", listUsers);
 
-        userServices.listUser(request, response,null);
+        userServices.listUser();
 
 
         String listPage = "user_list.jsp";

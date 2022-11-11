@@ -21,16 +21,26 @@ public class UserServices {
     private Session session;
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
+    private HttpServletRequest request;
+    private  HttpServletResponse response;
 
-    public UserServices() {
+    public UserServices(HttpServletRequest request, HttpServletResponse response) {
+        this.request=request;
+        this.response=response;
+
         entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
         entityManager = entityManagerFactory.createEntityManager();
 
         userDAO = new UserDAO(entityManager);
 
     }
+ public void listUser( ) throws ServletException, IOException {
 
-    public void listUser(HttpServletRequest request, HttpServletResponse response, String message ) throws ServletException, IOException {
+            listUser(null);
+
+}
+
+    public void listUser(String message ) throws ServletException, IOException {
 
         List<Users> listUsers = userDAO.listAll();
 
@@ -50,7 +60,7 @@ public class UserServices {
 
 
     }
-    public void createuser(HttpServletRequest request, HttpServletResponse response){
+    public void createuser(){
 
         String email = request.getParameter("email");
         String fullName = request.getParameter("fullname");
