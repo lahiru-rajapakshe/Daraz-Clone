@@ -64,7 +64,14 @@ public static  void setupBeforeClass() throws Exception{
     }
 
     @Test
-    void testDelete() {
+    public void testDeleteCategory() {
+    Integer catId=3;
+    categoryDAO.delete(catId);
+
+        Category category = categoryDAO.get(catId);
+        assertNull(category);
+
+
     }
 
     @Test
