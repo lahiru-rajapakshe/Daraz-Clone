@@ -75,7 +75,7 @@
     <td><%= resultSet.getString("email") %></td>
     <td><%= resultSet.getString("full_name") %></td>
 <td><a href="edit_user?id=${user.userId}">Edit</a>&nbsp;
-    <a href="">Delete</a>
+    <a href="javascript:confirmDelete(${user.userId})">Delete</a>
 
 </td>
 
@@ -106,6 +106,13 @@
 </div>
 
 <jsp:directive.include file="footer.jsp"/>
+<script>
+    function  confirmDelete(){
+        if (confirm("Are you sure. you need tto delete the user with ID "+ userId+" ? ")){
+            window.location="delete_user";
+        }
 
+    }
+</script>
 </body>
 </html>
