@@ -42,6 +42,16 @@ public static  void setupBeforeClass() throws Exception{
 
 
     }
+    @Test
+    public void testUpdateCategory(){
+        Category category = new Category("Java core");
+        category.setCategoryId(1);
+        Category update = categoryDAO.update(category);
+
+        assertEquals(category.getName(),update.getName());
+
+
+    }
 
     @Test
     void get() {
