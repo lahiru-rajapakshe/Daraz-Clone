@@ -22,6 +22,7 @@ public class CreateUserServlet extends HttpServlet {
 
         UserServices userServices = new UserServices();
         userServices.createuser(email,fullName,password);
+userServices.listUser();
 
 
 
