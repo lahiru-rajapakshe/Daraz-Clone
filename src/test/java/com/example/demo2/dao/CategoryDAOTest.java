@@ -13,9 +13,8 @@ import javax.persistence.Persistence;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CategoryDAOTest  {
-    private static EntityManagerFactory entityManagerFactory;
-    private static  EntityManager entityManager;
+class CategoryDAOTest extends BaseDAOTest {
+
 private static CategoryDAO categoryDAO;
 
 @BeforeClass
