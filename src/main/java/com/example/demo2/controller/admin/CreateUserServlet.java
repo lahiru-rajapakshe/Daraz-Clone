@@ -16,14 +16,11 @@ public class CreateUserServlet extends HttpServlet {
 
         UserServices userServices = new UserServices(request,response);
         userServices.createuser();
-userServices.listUser("New User Created !");
 
 
 
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
+
+
 }
