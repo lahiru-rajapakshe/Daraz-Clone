@@ -19,8 +19,7 @@ private static CategoryDAO categoryDAO;
 
 @BeforeClass
 public static  void setupBeforeClass() throws Exception{
-    entityManagerFactory= Persistence.createEntityManagerFactory("BookStoreWebsite");
-    entityManager=entityManagerFactory.createEntityManager();
+    BaseDAOTest.setupBeforeClass();
     categoryDAO=new CategoryDAO(entityManager);
 }
     @BeforeEach
@@ -29,9 +28,8 @@ public static  void setupBeforeClass() throws Exception{
     }
 
     @AfterClass
-    void tearDown() throws Exception{
-    entityManager.close();
-    entityManagerFactory.close();
+    public static void tearDown() throws Exception{
+    BaseDAOTest.tearDown();
     }
 
     @Test

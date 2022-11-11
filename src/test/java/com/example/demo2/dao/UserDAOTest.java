@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class UserDAOTest extends JpaDAO {
+public class UserDAOTest extends BaseDAOTest {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session session = sessionFactory.openSession();
 
@@ -27,9 +27,9 @@ public class UserDAOTest extends JpaDAO {
     void setUp() {
     }
 
-    @AfterEach
-    public void tearDown() {
-    }
+//    @AfterEach
+//    public void tearDown() {
+//    }
 
     @AfterClass
     static void g() {
