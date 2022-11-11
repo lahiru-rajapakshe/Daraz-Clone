@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
+public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
 
     public UserDAO(EntityManager entityManager) {
@@ -23,20 +23,19 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users>{
     }
 
     @Override
-    public Users get(Object userId)
-    {
-        return find(Users.class,userId);
+    public Users get(Object userId) {
+        return find(Users.class, userId);
     }
 
     @Override
     public void delete(Object userId) {
-super.delete(Users.class,userId);
+        super.delete(Users.class, userId);
     }
 
     @Override
     public List<Users> listAll() {
 
-        return  super.findWithNamedQuery("Users.findAll");
+        return super.findWithNamedQuery("Users.findAll");
 
     }
 
@@ -51,5 +50,9 @@ super.delete(Users.class,userId);
         return super.create(users);
     }
 
+    public Users findByEmail(String email) {
+        return (Users) super.findWithNamedQuery("Users.findByEmail");
+
+    }
 
 }

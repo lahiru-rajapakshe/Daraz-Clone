@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Map;
 
 public class JpaDAO<E> {
     SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -36,15 +37,15 @@ public class JpaDAO<E> {
         return entity;
     }
 
-    public E find(Class<E> type,Object id ){
+    public E find(Class<E> type, Object id) {
         E entity = session.find(type, id);
-        if(entity != null){
+        if (entity != null) {
             session.refresh(entity);
         }
         return entity;
     }
 
-    public void delete (Class<E> type, Object id){
+    public void delete(Class<E> type, Object id) {
         session.getTransaction().begin();
         E reference = session.getReference(type, id);
         session.remove(reference);
@@ -53,17 +54,24 @@ public class JpaDAO<E> {
 
 
     }
-    public List<E> findWithNamedQuery(String queryName){
+
+    public List<E> findWithNamedQuery(String queryName) {
         Query query = session.createNamedQuery(queryName);
         return query.getResultList();
 
-        
+
     }
 
-    public long contWithNamedQuery(String queryName){
+    public List<E> findWithNamedQuery(String queryName, String paramName, Object paramValue) {
         Query query = session.createNamedQuery(queryName);
-        return  (long) query.getSingleResult();
-        
+        query.setParameter(paramName, paramValue);
+        return query.getResultList();
+    }
+
+    public long contWithNamedQuery(String queryName) {
+        Query query = session.createNamedQuery(queryName);
+        return (long) query.getSingleResult();
+
 
     }
 }

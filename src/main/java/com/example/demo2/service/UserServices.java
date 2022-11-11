@@ -22,11 +22,11 @@ public class UserServices {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
     private HttpServletRequest request;
-    private  HttpServletResponse response;
+    private HttpServletResponse response;
 
     public UserServices(HttpServletRequest request, HttpServletResponse response) {
-        this.request=request;
-        this.response=response;
+        this.request = request;
+        this.response = response;
 
         entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
         entityManager = entityManagerFactory.createEntityManager();
@@ -34,43 +34,38 @@ public class UserServices {
         userDAO = new UserDAO(entityManager);
 
     }
- public void listUser( ) throws ServletException, IOException {
 
-            listUser(null);
+    public void listUser() throws ServletException, IOException {
 
-}
+        listUser(null);
 
-    public void listUser(String message ) throws ServletException, IOException {
+    }
+
+    public void listUser(String message) throws ServletException, IOException {
 
         List<Users> listUsers = userDAO.listAll();
 
         request.setAttribute("list_users ", listUsers);
 
-        if (message != null){
+        if (message != null) {
             request.setAttribute("message", message);
 
         }
-        String listPage= "user_list.jsp";
+        String listPage = "user_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-        requestDispatcher.forward(request,response);
-
-
-
-        
+        requestDispatcher.forward(request, response);
 
 
     }
-    public void createuser(){
+
+    public void createuser() {
 
         String email = request.getParameter("email");
         String fullName = request.getParameter("fullname");
         String password = request.getParameter("password");
 
-        Users newUsers = new Users(email,fullName,password);
+        Users newUsers = new Users(email, fullName, password);
         userDAO.create(newUsers);
-
-
-
 
 
     }
