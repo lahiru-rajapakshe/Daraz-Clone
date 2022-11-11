@@ -113,16 +113,20 @@ public class UserServices {
             Users users = new Users(userId, email, fullName, password);
             userDAO.update(users);
 
-            String message = "User has been updaated succesfully";
+            String message = "User has been updated succesfully";
             listUser(message);
 
 
         }
 
 
+
     }
 
-    public void deleteUser() {
-        
+    public void deleteUser() throws ServletException, IOException {
+        int userId = Integer.parseInt(request.getParameter("Id"));
+        userDAO.delete(userId);
+        String message = "User has been deleted succesfully";
+        listUser(message);
     }
 }
