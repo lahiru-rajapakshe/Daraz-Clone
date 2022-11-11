@@ -14,7 +14,16 @@
 <jsp:directive.include file="header.jsp"/>
 
 
-<h2 align="center">Create New User</h2>
+<h2 align="center">
+    <c:if test="${user != null}">
+Edit user
+    </c:if>
+
+    <c:if test="${user != null}">
+        Create New User
+    </c:if>
+
+</h2>
 <hr width="60%"/>
 <div align="center">
 
@@ -23,17 +32,17 @@
         <table>
             <tr>
                 <td align="right">Email : </td>
-                <td align="left"><input id="email" type="text" name="email" size="20" /></td>
+                <td align="left"><input id="email" type="text" name="email" size="20" value="${user.email}" /></td>
             </tr>
 
             <tr>
                 <td align="right">FullName : </td>
-                <td  align="left"><input id="fullName" type="text" name="fullName" size="20" /></td>
+                <td  align="left"><input id="fullName" type="text" name="fullName" size="20" value="${user.fullName}" /></td>
             </tr>
 
             <tr>
                 <td align="right">Password : </td>
-                <td  align="left"><input id="password" type="password" name="password" size="20" /></td>
+                <td  align="left"><input id="password" type="password" name="password" size="20" value="${user.password}" /></td>
             </tr>
 <tr>
     <td>&nbsp;</td>

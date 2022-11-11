@@ -74,7 +74,7 @@
     <td><%= resultSet.getString("user_id") %></td>
     <td><%= resultSet.getString("email") %></td>
     <td><%= resultSet.getString("full_name") %></td>
-<td><a href="edit_user?id=${user.id}">Edit</a>&nbsp;
+<td><a href="edit_user?id=${user.userId}">Edit</a>&nbsp;
     <a href="">Delete</a>
 
 </td>
