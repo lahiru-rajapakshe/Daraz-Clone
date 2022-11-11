@@ -19,7 +19,7 @@ public class ListUsersServlet extends HttpServlet {
 //        List<Users> listUsers = userServices.listUser();
 //        request.setAttribute("listUsers", listUsers);
 
-        userServices.listUser(request, response);
+        userServices.listUser(request, response,null);
 
 
         String listPage = "user_list.jsp";

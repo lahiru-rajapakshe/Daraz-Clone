@@ -30,10 +30,16 @@ public class UserServices {
 
     }
 
-    public void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void listUser(HttpServletRequest request, HttpServletResponse response, String message ) throws ServletException, IOException {
+
         List<Users> listUsers = userDAO.listAll();
 
         request.setAttribute("list_users ", listUsers);
+
+        if (message != null){
+            request.setAttribute("message", message);
+
+        }
         String listPage= "user_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
         requestDispatcher.forward(request,response);
