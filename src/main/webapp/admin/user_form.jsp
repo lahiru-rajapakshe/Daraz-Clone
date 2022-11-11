@@ -26,8 +26,12 @@ Edit user
 </h2>
 <hr width="60%"/>
 <div align="center">
-
-    <form action="create_user" method="POST"  onsubmit="return validateFormInput()"  >
+    <c:if test="${user != null}">
+        <form action="update_user" method="POST"  onsubmit="return validateFormInput()"  >
+    </c:if>
+        <c:if test="${user == null}">
+        <form action="create_user" method="POST"  onsubmit="return validateFormInput()"  >
+            </c:if>
 
         <table>
             <tr>
