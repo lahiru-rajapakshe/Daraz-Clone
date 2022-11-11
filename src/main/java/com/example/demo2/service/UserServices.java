@@ -98,4 +98,19 @@ public class UserServices {
 
 
     }
+
+    public void updateUser() throws ServletException, IOException {
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String email = request.getParameter("email");
+        String fullName = request.getParameter("fullName");
+        String password = request.getParameter("password");
+
+        Users users = new Users(userId,email,fullName,password);
+        userDAO.update(users);
+
+        String message="User has been updaated succesfully";
+        listUser(message);
+
+
+    }
 }
