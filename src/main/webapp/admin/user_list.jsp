@@ -109,7 +109,8 @@
 <script>
     function  confirmDelete(){
         if (confirm("Are you sure. you need tto delete the user with ID "+ userId+" ? ")){
-            window.location="delete_user";
+            window.location="delete_user?id="+userId;
+
         }
 
     }
