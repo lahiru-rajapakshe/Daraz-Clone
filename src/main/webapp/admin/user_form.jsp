@@ -18,7 +18,7 @@
 <hr width="60%"/>
 <div align="center">
 
-    <form action="create_user" method="post"  onsubmit="return validateFormInput()"  >
+    <form action="create_user" method="POST"  onsubmit="return validateFormInput()"  >
 
         <table>
             <tr>

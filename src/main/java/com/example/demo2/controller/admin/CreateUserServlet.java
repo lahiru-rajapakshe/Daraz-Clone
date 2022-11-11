@@ -6,15 +6,20 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "CreateUserServlet", value = "/CreateUserServlet")
+@WebServlet(name = "/admin/create_user", urlPatterns = {"/admin/create_user"})
 public class CreateUserServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        response.getWriter().println("email " + email);
+        System.out.println("ok ok ok ");
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = req.getParameter("email");
+        resp.getWriter().println("email " + email);
+        System.out.println("ok ok ok ");
     }
 }

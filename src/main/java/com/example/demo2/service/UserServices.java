@@ -32,4 +32,13 @@ public class UserServices {
 
 
     }
+    public void createuser(String  email, String fullname, String password){
+        Users newUsers = new Users(email,fullname,password);
+        userDAO.create(newUsers);
+
+
+
+
+
+    }
 }
