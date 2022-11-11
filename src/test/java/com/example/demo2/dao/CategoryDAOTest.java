@@ -53,8 +53,14 @@ public static  void setupBeforeClass() throws Exception{
 
     }
 
+
     @Test
-    void get() {
+    public void testGet(){
+    Integer catId=2;
+        Category category = categoryDAO.get(catId);
+        assertNotNull(category);
+
+
     }
 
     @Test

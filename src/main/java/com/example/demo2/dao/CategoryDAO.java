@@ -23,7 +23,7 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
 
     @Override
     public Category get(Object id) {
-        return null;
+       return super.find(Category.class,id);
     }
 
     @Override
