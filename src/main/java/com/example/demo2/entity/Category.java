@@ -11,6 +11,20 @@ public class Category {
     private String name;
     private Collection<Book> booksByCategoryId;
 
+    public Category() {
+    }
+
+    public Category(Integer categoryId, String name, Collection<Book> booksByCategoryId) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.booksByCategoryId = booksByCategoryId;
+    }
+
+    public Category(String name) {
+
+        this.name = name;
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "category_id", nullable = false)
