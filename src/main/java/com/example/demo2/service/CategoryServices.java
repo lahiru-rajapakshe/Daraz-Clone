@@ -118,4 +118,15 @@ listCategory(message);
 
 
     }
+
+    public void deleteCategory() throws ServletException, IOException {
+
+        int categoryId = Integer.parseInt(request.getParameter("id"));
+        categoryDAO.delete(categoryId);
+
+        String message="The category id "+categoryId+"has been deleted !";
+        listCategory(message);
+
+
+    }
 }
