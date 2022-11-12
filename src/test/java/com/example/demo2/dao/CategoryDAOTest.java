@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CategoryDAOTest extends BaseDAOTest {
+class CategoryDAOTest extends JpaDAO {
 
     private static CategoryDAO categoryDAO;
 
@@ -92,6 +92,15 @@ public void count() {
         assertEquals(4,count);
 
 
+
+
+    }
+
+    @Test
+    public void findByName() {
+        String name="Java core";
+        Category byName = categoryDAO.findByName(name);
+        assertNotNull(byName);
 
 
     }
