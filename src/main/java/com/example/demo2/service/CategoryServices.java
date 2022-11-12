@@ -1,5 +1,6 @@
 package com.example.demo2.service;
 
+import com.example.demo2.controller.admin.BaseServlet;
 import com.example.demo2.dao.CategoryDAO;
 import com.example.demo2.entity.Category;
 import jakarta.servlet.RequestDispatcher;
@@ -13,20 +14,18 @@ import javax.persistence.Persistence;
 import java.io.IOException;
 import java.util.List;
 
-public class CategoryServices {
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
+public class CategoryServices extends BaseServlet {
+
     private CategoryDAO categoryDAO;
     private HttpServletRequest request;
     private HttpServletResponse response;
 
     //Generic constructor
-    public CategoryServices(HttpServletRequest request, HttpServletResponse response) {
+    public CategoryServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
+this.entityManager=entityManager;
 
-        entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-        entityManager = entityManagerFactory.createEntityManager();
 
         categoryDAO = new CategoryDAO(entityManager);
 

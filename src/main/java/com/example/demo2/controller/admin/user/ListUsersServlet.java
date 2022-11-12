@@ -1,5 +1,6 @@
 package com.example.demo2.controller.admin.user;
 
+import com.example.demo2.controller.admin.BaseServlet;
 import com.example.demo2.entity.Users;
 import com.example.demo2.service.UserServices;
 import jakarta.servlet.*;
@@ -11,11 +12,11 @@ import java.sql.*;
 import java.util.List;
 
 @WebServlet(name = "/admin/list_users", value = "/ListUsersServlet")
-public class ListUsersServlet extends HttpServlet {
+public class ListUsersServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        UserServices userServices = new UserServices(request, response);
+        UserServices userServices = new UserServices(entityManager,request, response);
 //        List<Users> listUsers = userServices.listUser();
 //        request.setAttribute("listUsers", listUsers);
 

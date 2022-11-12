@@ -24,7 +24,8 @@ public class UserServices {
     private HttpServletRequest request;
     private HttpServletResponse response;
 
-    public UserServices(HttpServletRequest request, HttpServletResponse response) {
+    public UserServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
+        this.entityManager=entityManager;
         this.request = request;
         this.response = response;
 
