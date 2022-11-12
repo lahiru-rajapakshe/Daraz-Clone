@@ -74,5 +74,7 @@ if(message!=null){
         listCategory(null);
 
     }
+public void editCategory(){
 
+}
 }
