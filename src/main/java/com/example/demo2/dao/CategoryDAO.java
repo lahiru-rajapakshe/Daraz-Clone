@@ -39,6 +39,6 @@ super.delete(Category.class,id);
 
     @Override
     public long count() {
-        return 0;
+        return super.contWithNamedQuery("Category.countAll");
     }
 }

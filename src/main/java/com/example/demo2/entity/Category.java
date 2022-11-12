@@ -7,7 +7,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "category", schema = "bookstoredb", catalog = "")
 @NamedQueries({
-        @NamedQuery(name = "Category.findAll",query = "SELECT c FROM Category c ORDER BY c.name");
+        @NamedQuery(name = "Category.findAll",query = "SELECT c FROM Category c ORDER BY c.name"),
+        @NamedQuery(name = "Category.countAll",query = "SELECT COUNT(*) FROM Category ")
+
 })
 public class Category {
     private Integer categoryId;
