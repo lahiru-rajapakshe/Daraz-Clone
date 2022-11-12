@@ -7,7 +7,7 @@
 
 <div align="center">
     <a href="user_list.jsp">Users</a> |
-    <a href="categories">Categories</a> |
+    <a href="list_category">Categories</a> |
     <a href="books">Books</a> |
     <a href="customers">Customers</a> |
     <a href="reviews">Reviews</a> |
