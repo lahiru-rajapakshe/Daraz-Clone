@@ -31,10 +31,13 @@ public class CategoryServices extends BaseServlet {
 
     }
 
-    public void listCategory() throws ServletException, IOException {
+    public void listCategory(String message) throws ServletException, IOException {
         List<Category> listCategories = categoryDAO.listAll();
         request.setAttribute("listCategory", listCategories);
+if(message!=null){
 
+    request.setAttribute("message",message);
+}
         String listPage = "category_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
         requestDispatcher.forward(request, response);
@@ -56,11 +59,19 @@ public class CategoryServices extends BaseServlet {
         }else {
             Category newCategory = new Category(name);
             categoryDAO.create(newCategory);
+            String message ="New category created succesfully ";
+            listCategory(message);
 
 
         }
 
 
+
+
+    }
+
+    public void listCategory() throws ServletException,IOException{
+        listCategory(null);
 
     }
 
