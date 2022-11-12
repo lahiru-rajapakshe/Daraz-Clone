@@ -87,6 +87,12 @@ class CategoryDAOTest extends BaseDAOTest {
     }
 
     @Test
-    void count() {
+public void count() {
+        long count = categoryDAO.count();
+        assertEquals(4,count);
+
+
+
+
     }
 }
