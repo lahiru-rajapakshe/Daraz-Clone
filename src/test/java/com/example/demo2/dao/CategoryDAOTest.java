@@ -104,4 +104,14 @@ public void count() {
 
 
     }
+
+    @Test
+    public void findByNameNotFound() {
+        String name="Java core 2";
+        Category byName = categoryDAO.findByName(name);
+        assertNull(byName);
+
+
+
+    }
 }
