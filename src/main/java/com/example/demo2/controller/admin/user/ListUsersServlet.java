@@ -1,4 +1,4 @@
-package com.example.demo2.controller.admin;
+package com.example.demo2.controller.admin.user;
 
 import com.example.demo2.entity.Users;
 import com.example.demo2.service.UserServices;
