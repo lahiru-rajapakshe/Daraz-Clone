@@ -8,7 +8,9 @@ import java.util.Objects;
 @Table(name = "category", schema = "bookstoredb", catalog = "")
 @NamedQueries({
         @NamedQuery(name = "Category.findAll",query = "SELECT c FROM Category c ORDER BY c.name"),
-        @NamedQuery(name = "Category.countAll",query = "SELECT COUNT(*) FROM Category ")
+        @NamedQuery(name = "Category.countAll",query = "SELECT COUNT(*) FROM Category "),
+        @NamedQuery(name = "Category.findByName",query = "SELECT c FROM Category c WHERE c.name =:name")
+
 
 })
 public class Category {

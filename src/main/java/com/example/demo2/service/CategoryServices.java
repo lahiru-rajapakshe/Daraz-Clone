@@ -21,24 +21,28 @@ public class CategoryServices extends BaseServlet {
     private HttpServletResponse response;
 
     //Generic constructor
-    public CategoryServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
+    public CategoryServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
-this.entityManager=entityManager;
+        this.entityManager = entityManager;
 
 
         categoryDAO = new CategoryDAO(entityManager);
 
     }
-public void listCategory() throws ServletException, IOException {
-    List<Category> listCategories = categoryDAO.listAll();
-    request.setAttribute("listCategory",listCategories);
 
-    String listPage="category_list.jsp";
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-    requestDispatcher.forward(request,response);
+    public void listCategory() throws ServletException, IOException {
+        List<Category> listCategories = categoryDAO.listAll();
+        request.setAttribute("listCategory", listCategories);
+
+        String listPage = "category_list.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+        requestDispatcher.forward(request, response);
 
 
-}
+    }
+    public void createCategory(){
+
+    }
 
 }
