@@ -34,7 +34,7 @@ super.delete(Category.class,id);
 
     @Override
     public List<Category> listAll() {
-        return null;
+      return super.findWithNamedQuery("Category.findAll");
     }
 
     @Override
