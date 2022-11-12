@@ -41,7 +41,26 @@ public class CategoryServices extends BaseServlet {
 
 
     }
-    public void createCategory(){
+    public void createCategory() throws ServletException, IOException {
+        String name = request.getParameter("name");
+        Category existCategory = categoryDAO.findByName(name);
+
+        if(existCategory !=null){
+            String message =" Could not create the category "+name+" already exists !";
+
+            request.setAttribute("message",message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+            requestDispatcher.forward(request,response);
+
+
+        }else {
+            Category newCategory = new Category(name);
+            categoryDAO.create(newCategory);
+
+
+        }
+
+
 
     }
 
