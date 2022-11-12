@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CategoryDAOTest extends BaseDAOTest {
@@ -75,7 +77,11 @@ public static  void setupBeforeClass() throws Exception{
     }
 
     @Test
-    void listAll() {
+    public void listAll() {
+        List<Category> categories = categoryDAO.listAll();
+
+        assertTrue(categories.size()>0);
+
     }
 
     @Test
