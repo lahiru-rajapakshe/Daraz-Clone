@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ListCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-response.getWriter().println("List category");
+        response.getWriter().println("List category");
         CategoryServices categoryServices = new CategoryServices(request, response);
         categoryServices.listCategory();
     }
