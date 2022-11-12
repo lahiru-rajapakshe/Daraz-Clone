@@ -88,4 +88,34 @@ public void editCategory() throws ServletException, IOException {
 
 
 }
+
+    public void updateCategory() throws ServletException, IOException {
+
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        String categoryName = request.getParameter("name");
+
+        Category categoryById = categoryDAO.get(categoryId);
+        Category categoryByName = categoryDAO.findByName(categoryName);
+
+        if(categoryByName != null && categoryById.getCategoryId() != categoryByName.getCategoryId()){
+            String message ="could not update the category name "+categoryName+ "alredy exists !";
+            request.setAttribute("message",message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+            requestDispatcher.forward(request,response);
+
+
+
+
+        }
+        else{
+            categoryById.setName(categoryName);
+            categoryDAO.update(categoryById);
+String message="Category has updated sauccessfully !";
+listCategory(message);
+
+        }
+
+
+
+    }
 }
