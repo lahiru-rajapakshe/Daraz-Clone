@@ -31,6 +31,8 @@
 <html>
 <head>
     <title>Manage users |  Administration</title>
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
@@ -75,7 +77,7 @@
     <td><%= resultSet.getString("email") %></td>
     <td><%= resultSet.getString("full_name") %></td>
 <td><a href="edit_user?id=${user.userId}">Edit</a>&nbsp;
-    <a href="javascript:confirmDelete(${user.userId})">Delete</a>
+    <a href="javascript:void(0);" class="deleteLink" id="${user.userId}">Delete</a>
 
 </td>
 
@@ -107,13 +109,15 @@
 
 <jsp:directive.include file="footer.jsp"/>
 <script>
-    function  confirmDelete(){
-        if (confirm("Are you sure. you need tto delete the user with ID "+ userId+" ? ")){
-            window.location="delete_user?id="+userId;
+   $(document).ready(function (){
 
-        }
-
-    }
+       $(".deleteLink").each(function (){
+          $(this).on("click",function (){
+              userId=$(this).attr("id");
+             if (confirm('Are you sure  you want to dlete the user with user ID '+userId+'?'));
+          });
+       });
+   });
 </script>
 </body>
 </html>

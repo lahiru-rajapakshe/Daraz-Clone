@@ -29,17 +29,17 @@
 <hr width="60%"/>
 <div align="center">
     <c:if test="${category != null}">
-    <form action="update_category" method="POST"  id="categoryForm" >
+    <form action="update_category" method="POST" id="categoryForm">
         <input type="hidden" name="userId" value="${category.userId}">
         </c:if>
         <c:if test="${category == null}">
-        <form action="create_category" method="POST"   id="categoryForm">
+        <form action="create_category" method="POST" id="categoryForm">
             </c:if>
 
             <table>
                 <tr>
-                    <td align="right">Name : </td>
-                    <td align="left"><input id="name" type="text" name="name" size="20" value="${category.name}" /></td>
+                    <td align="right">Name :</td>
+                    <td align="left"><input id="name" type="text" name="name" size="20" value="${category.name}"/></td>
                 </tr>
 
                 <tr>
@@ -47,7 +47,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save" />
+                        <input type="submit" value="Save"/>
                         <input type="button" value="Cancel" onclick="javascript:history.go(-1);"/>
                     </td>
 
@@ -64,35 +64,33 @@
 </body>
 <script type="text/javascript">
 
-    $(document).ready(function (){
+    $(document).ready(function () {
         $("#userForm").validate({
-            rules:{
+            rules: {
 
-                name:"required",
+                name: "required",
 
             },
 
 
-                name: "please enter the category name",
-
+            name: "please enter the category name",
 
 
         });
     });
 
 
-    function validateFormInput(){
-        var fieldName= document.getElementById("name");
+    function validateFormInput() {
+        var fieldName = document.getElementById("name");
 
 
-
-        if(fieldName.value.length == 0){
+        if (fieldName.value.length == 0) {
             alert("Cattegory Name is Required !");
             fieldName.focus();
             return false;
         }
 
-        return  true;
+        return true;
 
 
     }
