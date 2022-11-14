@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Create New User</title>
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
