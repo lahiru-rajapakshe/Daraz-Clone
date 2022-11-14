@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class JpaDAO<E> {
     SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -65,6 +66,19 @@ public class JpaDAO<E> {
     public List<E> findWithNamedQuery(String queryName, String paramName, Object paramValue) {
         Query query = session.createNamedQuery(queryName);
         query.setParameter(paramName, paramValue);
+        return query.getResultList();
+    }
+
+    public List<E> findWithNamedQuery(String queryName,Map<String, Object> parameters) {
+        Query query = session.createNamedQuery(queryName);
+        Set<Map.Entry<String, Object>> setParameters = parameters.entrySet();
+
+        for (Map.Entry<String,Object> entry:setParameters){
+
+            query.setParameter(entry.getKey(), entry.getValue());
+        }
+
+
         return query.getResultList();
     }
 

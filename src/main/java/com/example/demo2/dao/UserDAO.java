@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
@@ -62,7 +64,16 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
         
 
     }
-    public boolean checkLogin(){
+    public boolean checkLogin(String email,String password){
+        Map<String,Object> parameters=new HashMap<>();
+        parameters.put("email",email);
+        parameters.put("password",password);
+
+        List<Users> listUsers = super.findWithNamedQuery("Users.checkLogin", parameters);
+        if(listUsers.size()==1){
+            return  true;
+        }
+
 
         return false;
     }
