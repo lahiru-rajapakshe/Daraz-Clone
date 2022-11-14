@@ -29,11 +29,11 @@ Edit user
 <hr width="60%"/>
 <div align="center">
     <c:if test="${user != null}">
-        <form action="update_user" method="POST"  onsubmit="return validateFormInput()"  >
+        <form action="update_user" method="POST"    id="userForm">
             <input type="hidden" name="userId" value="${user.userId}">
     </c:if>
         <c:if test="${user == null}">
-        <form action="create_user" method="POST"  onsubmit="return validateFormInput()"  >
+        <form action="create_user" method="POST" id="userForm" >
             </c:if>
 
         <table>
@@ -72,6 +72,22 @@ Edit user
 
 </body>
 <script type="text/javascript">
+    $(document).ready(function (){
+        $("#userForm").validate({
+       rules:{
+           email:"required",
+           fullname:"required",
+           password:"required",
+       },
+            messages:{
+           email: "please enter the email",
+                fullname: "please enter the fullname",
+                password: "please enter the password",
+            },
+
+        });
+    });
+
 function validateFormInput(){
     var fieldEmail= document.getElementById("email");
     var fieldFullName = document.getElementById("fullName");
