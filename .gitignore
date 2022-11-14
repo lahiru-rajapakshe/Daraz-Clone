@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 .idea
+./node_modules
+/node_modules
+
 
 ### Eclipse ###
 .apt_generated
