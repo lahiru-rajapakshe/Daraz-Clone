@@ -5,11 +5,38 @@
 <br><br>
 <h2 align="center">Welcome, Admin <a href="logout">logout</a></h2>
 
-<div align="center">
-    <a href="user_list.jsp">Users</a> |
-    <a href="list_category">Categories</a> |
-    <a href="books">Books</a> |
-    <a href="customers">Customers</a> |
-    <a href="reviews">Reviews</a> |
-    <a href="orders">Orders</a> |
+<div align="center" style="display: table">
+
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/users.jpg" alt="Users"> Users</a> |
+    </div>
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/categories.png" alt="Categories"> Categories</a> |
+    </div>
+
+
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/Books.png" alt="Books"> Books</a> |
+    </div>
+
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/Customers.png" alt="Customers"> Customers</a> |
+    </div>
+
+
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/Reviews.png" alt="Reviews"> Reviews</a> |
+    </div>
+
+    <div>
+
+        <a href="user_list.jsp"><img src="../images/Orders.png" alt="Orders"> Orders</a> |
+    </div>
+
+
 </div>
