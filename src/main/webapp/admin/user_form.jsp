@@ -88,31 +88,5 @@ Edit user
         });
     });
 
-function validateFormInput(){
-    var fieldEmail= document.getElementById("email");
-    var fieldFullName = document.getElementById("fullName");
-    var fieldPassword = document.getElementById("password");
-
-
-    if(fieldEmail.value.length == 0){
-        alert("Email is Required !");
-        fieldEmail.focus();
-        return false;
-    }
-    if(fieldFullName.value.length == 0){
-        alert("Full name is Required !");
-        fieldFullName.focus();
-        return false;
-    }
-
-    if(fieldPassword.value.length == 0){
-        alert("Password is Required !");
-        fieldPassword.focus();
-        return false;
-    }
-    return  true;
-
-
-}
 </script>
 </html>
