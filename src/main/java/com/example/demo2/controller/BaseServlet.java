@@ -1,4 +1,4 @@
-package com.example.demo2.controller.admin;
+package com.example.demo2.controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

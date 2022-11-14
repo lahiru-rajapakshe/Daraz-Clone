@@ -1,6 +1,6 @@
 package com.example.demo2.controller.admin.category;
 
-import com.example.demo2.controller.admin.BaseServlet;
+import com.example.demo2.controller.BaseServlet;
 import com.example.demo2.service.CategoryServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

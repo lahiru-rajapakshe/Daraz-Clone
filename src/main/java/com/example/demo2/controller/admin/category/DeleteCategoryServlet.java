@@ -1,6 +1,6 @@
 package com.example.demo2.controller.admin.category;
 
-import com.example.demo2.controller.admin.BaseServlet;
+import com.example.demo2.controller.BaseServlet;
 import com.example.demo2.service.CategoryServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DeleteCategoryServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryServices categoryServices = new CategoryServices(entityManager, req, response);
+        CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
         categoryServices.deleteCategory();
     }
 

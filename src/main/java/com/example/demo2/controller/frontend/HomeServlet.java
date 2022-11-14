@@ -1,5 +1,6 @@
 package com.example.demo2.controller.frontend;
 
+import com.example.demo2.controller.BaseServlet;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -7,7 +8,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "HomeServlet", value = "/HomeServlet")
-public class HomeServlet extends HttpServlet {
+public class HomeServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
