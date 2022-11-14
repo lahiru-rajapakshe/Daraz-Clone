@@ -8,4 +8,12 @@
     display: table-cell;
     padding-right: 20px;
 }
-
+.message{
+    font-style: italic;
+    color: blue;
+}
+.error{
+    color: red;
+    margin: 5px;
+    font-style: italic;
+}

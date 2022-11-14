@@ -75,12 +75,19 @@ Edit user
     $(document).ready(function (){
         $("#userForm").validate({
        rules:{
-           email:"required",
+           email:{
+               required :true,
+               email:true,
+           },
            fullname:"required",
            password:"required",
        },
             messages:{
-           email: "please enter the email",
+           email: {
+               required: "please enter email",
+               email:"please enter a valid email adresss",
+
+           },
                 fullname: "please enter the fullname",
                 password: "please enter the password",
             },
