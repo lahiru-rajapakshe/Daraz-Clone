@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+#headermenu{
+    display: table;
+}
+
+#headermenu div{
+    display: table-cell;
+    padding-right: 20px;
+}
+

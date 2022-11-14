@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Daraz-clone App</title>
+
 </head>
 <body>
 <jsp:directive.include file="header.jsp" />
