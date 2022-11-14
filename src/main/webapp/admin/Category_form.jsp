@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Create New User</title>
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
@@ -27,11 +29,11 @@
 <hr width="60%"/>
 <div align="center">
     <c:if test="${category != null}">
-    <form action="update_category" method="POST"  onsubmit="return validateFormInput()"  >
+    <form action="update_category" method="POST"  id="categoryForm" >
         <input type="hidden" name="userId" value="${category.userId}">
         </c:if>
         <c:if test="${category == null}">
-        <form action="create_category" method="POST"  onsubmit="return validateFormInput()"  >
+        <form action="create_category" method="POST"   id="categoryForm">
             </c:if>
 
             <table>
@@ -61,6 +63,24 @@
 
 </body>
 <script type="text/javascript">
+
+    $(document).ready(function (){
+        $("#userForm").validate({
+            rules:{
+
+                name:"required",
+
+            },
+
+
+                name: "please enter the category name",
+
+
+
+        });
+    });
+
+
     function validateFormInput(){
         var fieldName= document.getElementById("name");
 
