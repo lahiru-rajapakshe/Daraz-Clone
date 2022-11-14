@@ -31,6 +31,9 @@
 <html>
 <head>
     <title>Manage Categories |  Administration</title>
+
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
@@ -76,7 +79,7 @@
     <td><%= resultSet.getString("email") %></td>
     <td><%= resultSet.getString("full_name") %></td>
 <td><a href="edit_category?id=${cat.categoryId}">Edit</a>&nbsp;
-    <a href="javascript:confirmDelete(${cat.categoryId})">Delete</a>
+    <a href="javascript:void(0);" class="deleteLink" id="${cat.categoryId}">Delete</a>
 
 </td>
 
@@ -108,6 +111,18 @@
 
 <jsp:directive.include file="footer.jsp"/>
 <script>
+
+    $(document).ready(function (){
+
+        $(".deleteLink").each(function (){
+            $(this).on("click",function (){
+                categoryId=$(this).attr("id");
+                if (confirm('Are you sure  you want to dlete the user with categoryId '+userId+'?'));
+            });
+        });
+    });
+
+
     function  confirmDelete(){
         if (confirm("Are you sure. you need tto delete the Category with ID "+ categoryId+" ? ")){
             window.location="delete_category?id="+categoryId;
