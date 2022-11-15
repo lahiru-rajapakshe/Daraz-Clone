@@ -140,4 +140,12 @@ public static void tearDownAfterClass(){
 
 
     }
+    @Test
+    public void testDeleteBookSuccess() {
+        Integer bookId=100;
+        bookDAO.delete(bookId);
+        assertTrue(true);
+
+
+    }
 }
