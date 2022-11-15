@@ -25,8 +25,8 @@ super.delete(Book.class,bookId);
     }
 
     @Override
-    public List listAll() {
-        return null;
+    public List<BookDAO> listAll() {
+      return super.findWithNamedQuery("Book.findAll");
     }
 
     @Override
