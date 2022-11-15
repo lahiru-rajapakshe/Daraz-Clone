@@ -13,8 +13,9 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
     }
 
     @Override
-    public Object get(Object id) {
-        return null;
+    public Book get(Object bookId) {
+
+        return super.find(Book.class,bookId);
     }
 
     @Override
