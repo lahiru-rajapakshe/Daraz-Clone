@@ -16,7 +16,12 @@
 <div align="center">
     <h1>Book Store Administration</h1>
     <h2>Admin Login</h2>
+    <c:if test="${message != null}">
+        <div align="center">
+            <h4><i>${message}</i></h4>
+        </div>
 
+    </c:if>
     <form action="login" id="loginForm" method="post">
         <table>
             <tr>

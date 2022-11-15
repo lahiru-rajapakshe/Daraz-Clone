@@ -143,6 +143,13 @@ public class UserServices {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
 
             requestDispatcher.forward(request,response);
+        }else{
+            String message="Login failed !";
+            request.setAttribute("message",  message);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.forward(request,response);
+
         }
     }
 }
