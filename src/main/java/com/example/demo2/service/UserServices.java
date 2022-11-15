@@ -130,4 +130,10 @@ public class UserServices {
         String message = "User has been deleted succesfully";
         listUser(message);
     }
+
+    public void login(){
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+    }
 }
