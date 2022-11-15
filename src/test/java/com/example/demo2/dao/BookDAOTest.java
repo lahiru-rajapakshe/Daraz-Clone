@@ -49,12 +49,22 @@ class BookDAOTest extends JpaDAO {
     void tearDown() {
     }
 
-    @Test(expected = EntityNotFoundException.class)
+//    @Test(expected = EntityNotFoundException.class)
     public void testGetBookFail() {
         Integer bookId = 99;
-        bookDAO.get(bookId);
+        Book book = bookDAO.get(bookId);
+        assertNull(book);
     }
+//    @Test(expected = EntityNotFoundException.class)
+    @Test
 
+    public void testGetBookSuccess() {
+        Integer bookId = 99;
+        Book book = bookDAO.get(bookId);
+        assertNotNull(book);
+
+
+    }
     @Test
     void testDelete() {
     }
