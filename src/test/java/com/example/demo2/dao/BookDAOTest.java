@@ -22,7 +22,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookDAOTest extends JpaDAO {
-private static  BookDAO bookDAO;
+    private static BookDAO bookDAO;
 
     public BookDAOTest(EntityManager entityManager) {
         super(entityManager);
@@ -30,17 +30,17 @@ private static  BookDAO bookDAO;
     }
 
 
+    @BeforeClass
+    public static void setupBefore() throws Exception {
+        BaseDAOTest.setupBeforeClass();
+        new BookDAO(entityManager);
+    }
 
-@BeforeClass
-public static  void setupBefore() throws Exception {
-    BaseDAOTest.setupBeforeClass();
-    new BookDAO(entityManager);
-}
-
-@AfterClass
-public static void tearDownAfterClass(){
+    @AfterClass
+    public static void tearDownAfterClass() {
 //BaseDAOTest.tearDownAfterClass();
-}
+    }
+
     @BeforeEach
     void setUp() {
     }
@@ -49,8 +49,10 @@ public static void tearDownAfterClass(){
     void tearDown() {
     }
 
-    @Test
-    void get() {
+    @Test(expected = EntityNotFoundException.class)
+    public void testGetBookFail() {
+        Integer bookId = 99;
+        bookDAO.get(bookId);
     }
 
     @Test
@@ -83,7 +85,7 @@ public static void tearDownAfterClass(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date publishDate = simpleDateFormat.parse("22,2,2022");
 
-        String imagePath="";
+        String imagePath = "";
 //        put ur image path here
         byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
         newBook.setImage(imageBytes);
@@ -92,8 +94,7 @@ public static void tearDownAfterClass(){
         newBook.setPublishDate((java.sql.Date) publishDate);
         Book createdBook = bookDAO.create(newBook);
 
-        assertTrue(createdBook.getBookId()>0);
-
+        assertTrue(createdBook.getBookId() > 0);
 
 
     }
@@ -117,7 +118,7 @@ public static void tearDownAfterClass(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date publishDate = simpleDateFormat.parse("22,2,2022");
 
-        String imagePath="";
+        String imagePath = "";
 //        put ur image path here
         byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
         existBook.setImage(imageBytes);
@@ -126,23 +127,23 @@ public static void tearDownAfterClass(){
         existBook.setPublishDate((java.sql.Date) publishDate);
         Book updatedBook = bookDAO.update(existBook);
 
-        assertTrue(updatedBook.getTitle(),"changed Effective java ");
-
+        assertTrue(updatedBook.getTitle(), "changed Effective java ");
 
 
     }
 
     @Test(expected = EntityNotFoundException.class)
     public void testDeleteBookFail() {
-        Integer bookId=100;
+        Integer bookId = 100;
         bookDAO.delete(bookId);
 //        assertTrue(true);
 
 
     }
+
     @Test
     public void testDeleteBookSuccess() {
-        Integer bookId=100;
+        Integer bookId = 100;
         bookDAO.delete(bookId);
         assertTrue(true);
 
