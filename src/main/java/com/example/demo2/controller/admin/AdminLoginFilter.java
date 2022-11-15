@@ -23,10 +23,15 @@ public class AdminLoginFilter implements Filter {
         boolean loggedIn = session != null  && session.getAttribute("useremail") != null;
         String logginURI = httpRequest.getContextPath() + "/admin/login";
         boolean loggingRequest = httpRequest.getRequestURI().equals(logginURI);
-
+        boolean loginPage = httpRequest.getRequestURI().endsWith("login.jsp");
         
+        if(loggedIn && (loginPage || loggingRequest)){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
+            requestDispatcher.forward(request,response);
 
-        if(loggedIn || loggingRequest){
+        }
+
+        else if(loggedIn || loggingRequest){
             System.out.println("User logged in");
             chain.doFilter(request, response);
 
