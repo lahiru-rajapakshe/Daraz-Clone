@@ -111,9 +111,18 @@ public class UserDAOTest extends JpaDAO {
     }
 
     @Test
-    public void checkLogin() {
+    public void checkLoginSuccess() {
         String email ="";  // add your database record for this value
         String password =""; // add your database record for this value
+        boolean loginResult=userDAO.checkLogin(email,password);
+
+        assertTrue(loginResult);
+
+    }
+    @Test
+    public void checkLoginFailed() {
+        String email ="";  // add your database record(not) for this value
+        String password =""; // add your database record(not) for this value
         boolean loginResult=userDAO.checkLogin(email,password);
 
         assertTrue(loginResult);
