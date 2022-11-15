@@ -18,7 +18,8 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
     }
 
     @Override
-    public void delete(Object id) {
+    public void delete(Object bookId) {
+super.delete(Book.class,bookId);
 
     }
 
