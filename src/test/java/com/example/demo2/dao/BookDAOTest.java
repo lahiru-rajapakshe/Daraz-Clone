@@ -163,4 +163,23 @@ class BookDAOTest extends JpaDAO {
 
 
     }
+
+    @Test
+    public void testFindByTitleNotExist(){
+        String title="thinking in java";
+        Book book = bookDAO.findByTitle(title);
+        System.out.println(book.getPrice());
+        System.out.println(book.getAuthor());
+        assertNull(book);
+
+    }
+
+    @Test
+    public void testFindByTitleExist(){
+        String title="thinking in java 2";
+        Book book = bookDAO.findByTitle(title);
+        assertNotNull(book);
+
+    }
+
 }
