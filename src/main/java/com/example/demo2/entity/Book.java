@@ -13,6 +13,8 @@ public class Book {
     private Integer bookId;
     private String book;
     private String author;
+
+    private String title;
     private String description;
     private String isbn;
     private byte[] image;
