@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -127,6 +128,15 @@ public static void tearDownAfterClass(){
 
         assertTrue(updatedBook.getTitle(),"changed Effective java ");
 
+
+
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void testDeleteBookFail() {
+        Integer bookId=100;
+        bookDAO.delete(bookId);
+//        assertTrue(true);
 
 
     }
