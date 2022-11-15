@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class UserDAOTest extends BaseDAOTest {
+public class UserDAOTest extends JpaDAO {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session session = sessionFactory.openSession();
 
@@ -108,6 +108,16 @@ public class UserDAOTest extends BaseDAOTest {
             session.close();
             sessionFactory.close();
         }
+    }
+
+    @Test
+    public void checkLogin() {
+        String email ="";  // add your database record for this value
+        String password =""; // add your database record for this value
+        boolean loginResult=userDAO.checkLogin(email,password);
+
+        assertTrue(loginResult);
+
     }
 
 //    @Test
