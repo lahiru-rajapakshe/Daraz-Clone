@@ -10,7 +10,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "book", schema = "bookstoredb")
 @NamedQueries({
-        @NamedQuery(name = "Book.findAll",query = "SELECT b FROM  Book b")
+        @NamedQuery(name = "Book.findAll",query = "SELECT b FROM  Book b"),
+        @NamedQuery(name = "Book.findAll",query = "SELECT b FROM  Book b WHERE b.title =: title"),
 })
 public class Book {
     private Integer bookId;
