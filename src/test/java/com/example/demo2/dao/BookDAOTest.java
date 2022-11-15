@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,7 +71,10 @@ class BookDAOTest extends JpaDAO {
     }
 
     @Test
-    void listAll() {
+    public void listAll() {
+        List<BookDAO> bookDAOS = bookDAO.listAll();
+        assertFalse(bookDAOS.isEmpty());
+
     }
 
     @Test
