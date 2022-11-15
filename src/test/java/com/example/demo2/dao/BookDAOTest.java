@@ -20,7 +20,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BookDAOTest extends BaseDAOTest {
+class BookDAOTest extends JpaDAO {
 private static  BookDAO bookDAO;
 
     public BookDAOTest(EntityManager entityManager) {
@@ -92,6 +92,40 @@ public static void tearDownAfterClass(){
         Book createdBook = bookDAO.create(newBook);
 
         assertTrue(createdBook.getBookId()>0);
+
+
+
+    }
+
+    @Test
+    public void testUpdateBook() throws IOException, ParseException {
+        Book existBook = new Book();
+        existBook.setBook(String.valueOf(1));
+
+        Category advanced_java = new Category("changed Advanced java");
+        advanced_java.setCategoryId(2);
+
+        existBook.setCategoryByCategoryId(advanced_java);
+
+        existBook.setTitle("changed Effective java ");
+        existBook.setAuthor("changed Joseph");
+        existBook.setDescription("changed  some description");
+        existBook.setPrice(22.4);
+        existBook.setIsbn("77971134234123");
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date publishDate = simpleDateFormat.parse("22,2,2022");
+
+        String imagePath="";
+//        put ur image path here
+        byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
+        existBook.setImage(imageBytes);
+
+
+        existBook.setPublishDate((java.sql.Date) publishDate);
+        Book updatedBook = bookDAO.update(existBook);
+
+        assertTrue(updatedBook.getTitle(),"changed Effective java ");
 
 
 
