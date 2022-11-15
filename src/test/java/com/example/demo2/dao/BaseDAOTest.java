@@ -7,12 +7,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class BaseDAOTest {
+
+    private static  BookDAO bookDAO;
     protected static EntityManagerFactory entityManagerFactory;
     protected static EntityManager entityManager;
 
     public static  void setupBeforeClass() throws Exception {
         entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
         entityManager = entityManagerFactory.createEntityManager();
+
+
     }
 
     public static void tearDown() throws Exception{
