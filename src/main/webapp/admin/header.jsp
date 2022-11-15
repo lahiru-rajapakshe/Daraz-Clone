@@ -3,7 +3,7 @@
 
 </div>
 <br><br>
-<h2 align="center">Welcome, Admin <a href="logout">logout</a></h2>
+<h2 align="center">Welcome, <c:out value="${sessionScope.useremail}"/> <a href="logout">logout</a></h2>
 
 <div align="center">
 
