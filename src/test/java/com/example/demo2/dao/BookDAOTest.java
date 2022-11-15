@@ -10,6 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,7 +65,7 @@ public static void tearDownAfterClass(){
     }
 
     @Test
-    public void testCreate() throws ParseException {
+    public void testCreate() throws ParseException, IOException {
         Book newBook = new Book();
 
         Category advanced_java = new Category("Advanced java");
@@ -77,6 +81,12 @@ public static void tearDownAfterClass(){
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date publishDate = simpleDateFormat.parse("22,2,2022");
+
+        String imagePath="";
+//        put ur image path here
+        byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
+        newBook.setImage(imageBytes);
+
 
         newBook.setPublishDate((java.sql.Date) publishDate);
         Book createdBook = bookDAO.create(newBook);
