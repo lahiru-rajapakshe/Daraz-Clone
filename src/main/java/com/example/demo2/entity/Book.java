@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "book", schema = "bookstoredb", catalog = "")
+@Table(name = "book", schema = "bookstoredb")
 public class Book {
     private Integer bookId;
     private String book;
@@ -20,7 +20,7 @@ public class Book {
     private byte[] image;
     private Double price;
     private Date publishDate;
-    private Timestamp lastUpdateTime;
+    private Date lastUpdateTime;
     private Integer categoryId;
     private Category categoryByCategoryId;
     private Collection<OrderDetail> orderDetailsByBookId;
@@ -109,12 +109,12 @@ public class Book {
 
     @Basic
     @Column(name = "last_update_time", nullable = false)
-    public Timestamp getLastUpdateTime() {
+    public Date getLastUpdateTime() {
         return lastUpdateTime;
     }
 
-    public void setLastUpdateTime(Timestamp lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLastUpdateTime(java.util.Date lastUpdateTime) {
+        this.lastUpdateTime = (Date) lastUpdateTime;
     }
 
     @Basic
@@ -169,4 +169,6 @@ public class Book {
     public void setReviewsByBookId(Collection<Review> reviewsByBookId) {
         this.reviewsByBookId = reviewsByBookId;
     }
+
+
 }
