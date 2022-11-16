@@ -31,7 +31,7 @@ super.delete(Book.class,bookId);
 
     @Override
     public long count() {
-        return 0;
+        return super.contWithNamedQuery("Book.countAll");
     }
 
     @Override
