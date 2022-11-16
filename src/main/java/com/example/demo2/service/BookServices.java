@@ -2,6 +2,7 @@ package com.example.demo2.service;
 
 import com.example.demo2.dao.BookDAO;
 import com.example.demo2.dao.CategoryDAO;
+import com.example.demo2.entity.Book;
 import com.example.demo2.entity.Category;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -69,14 +70,30 @@ public class BookServices {
         Float price = Float.parseFloat(request.getParameter("price"));
 
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date publishDate=null;
         try {
-            Date publishDate = dateFormat.parse(request.getParameter("publishDate"));
+            publishDate = dateFormat.parse(request.getParameter("publishDate"));
 
         } catch (ParseException e) {
             e.printStackTrace();
             throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
 
         }
+
+        Book newBook = new Book();
+        newBook.setTitle(title);
+        newBook.setAuthor(author);
+        newBook.setDescription(description);
+        newBook.setIsbn(isbn);
+        newBook.setPublishDate((java.sql.Date) publishDate);
+
+        Category category = categoryDAO.get(categoryId);
+        newBook.setCategoryByCategoryId(category);
+
+        newBook.setPrice(Double.valueOf(price));
+
+
+
 
         Part part = request.getPart("bookImage");
         if(part != null && part.getSize()>0){
@@ -86,8 +103,17 @@ public class BookServices {
             InputStream inputStream = part.getInputStream();
             inputStream.read(imageBytes);
             inputStream.close();
-        }
 
+            newBook.setImage(imageBytes);
+        }
+        Book createdBook = bookDAO.create(newBook);
+        if(createdBook.getBookId()>0){
+//            System.out.println();
+            String message=" A book has been created successfully !";
+            request.setAttribute("message", message);
+
+            listBooks();
+        }
 
 
     }
