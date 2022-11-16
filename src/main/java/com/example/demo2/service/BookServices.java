@@ -68,7 +68,6 @@ public class BookServices {
     }
 
     public void createBook() throws ServletException, IOException {
-        Integer categoryId = Integer.parseInt(request.getParameter("category"));
         String title = request.getParameter("title");
         Book newBook = new Book();
         newBook.setTitle(title);
@@ -111,13 +110,17 @@ String editPage="book_form.jsp";
 
     }
 
-    public void updateBook() {
+    public void updateBook() throws ServletException, IOException {
         Integer bookId = Integer.valueOf(request.getParameter("id"));
         Book existBook = bookDAO.get(bookId);
+readBookFields(existBook);
+bookDAO.update(existBook);
+String message =" The book has been updated successfully !";
+listBooks(message);
 
 
     }
-    public void readBookFields(Book book){
+    public void readBookFields(Book book) throws ServletException, IOException {
 
         String author = request.getParameter("author");
         String description = request.getParameter("description");
@@ -141,9 +144,10 @@ String editPage="book_form.jsp";
         book.setDescription(description);
         book.setIsbn(isbn);
         book.setPublishDate((java.sql.Date) publishDate);
+        Integer categoryId = Integer.parseInt(request.getParameter("category"));
 
         Category category = categoryDAO.get(categoryId);
-        newBook.setCategoryByCategoryId(category);
+        book.setCategoryByCategoryId(category);
 
         book.setPrice(Double.valueOf(price));
 
@@ -159,7 +163,7 @@ String editPage="book_form.jsp";
             inputStream.read(imageBytes);
             inputStream.close();
 
-            newBook.setImage(imageBytes);
+            book.setImage(imageBytes);
         }
     }
 }
