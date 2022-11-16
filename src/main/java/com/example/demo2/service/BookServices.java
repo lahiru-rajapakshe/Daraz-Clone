@@ -20,11 +20,11 @@ import java.util.Date;
 import java.util.List;
 
 public class BookServices {
-  private EntityManager entityManager;
-  private HttpServletRequest request;
-  private HttpServletResponse response;
-  private CategoryDAO categoryDAO;
-  private BookDAO bookDAO;
+    private EntityManager entityManager;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    private CategoryDAO categoryDAO;
+    private BookDAO bookDAO;
 
 
     public BookServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
@@ -36,33 +36,33 @@ public class BookServices {
         bookDAO = new BookDAO(entityManager);
         categoryDAO = new CategoryDAO(entityManager);
     }
-    public void listBooks() throws ServletException, IOException{
+
+    public void listBooks() throws ServletException, IOException {
         listBooks(null);
     }
-    public void listBooks(String message) throws ServletException, IOException {
-        List<BookDAO> listBooks =bookDAO.listAll();
-        request.setAttribute("listBooks",listBooks);
 
-        if(message != null){
+    public void listBooks(String message) throws ServletException, IOException {
+        List<BookDAO> listBooks = bookDAO.listAll();
+        request.setAttribute("listBooks", listBooks);
+
+        if (message != null) {
             request.setAttribute("message", message);
 
         }
-        String listPage="book_list.jsp";
+        String listPage = "book_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-        requestDispatcher.forward(request,response);
-
+        requestDispatcher.forward(request, response);
 
 
     }
 
     public void showBookNewForm() throws ServletException, IOException {
-        List<Category> listCategories =categoryDAO.listAll();
-        request.setAttribute("listCategories",listCategories);
+        List<Category> listCategories = categoryDAO.listAll();
+        request.setAttribute("listCategories", listCategories);
 
-        String newPage="book_form.jsp";
+        String newPage = "book_form.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(newPage);
-        requestDispatcher.forward(request,response);
-
+        requestDispatcher.forward(request, response);
 
 
     }
@@ -73,18 +73,18 @@ public class BookServices {
         newBook.setTitle(title);
 
         Book existBook = bookDAO.findByTitle(title);
-        if(existBook != null){
-            String message="could not create a new book because this title already exists !";
+        if (existBook != null) {
+            String message = "could not create a new book because this title already exists !";
             listBooks(message);
-            request.setAttribute("message",message);
+            request.setAttribute("message", message);
             return;
 
         }
-  readBookFields(newBook);
+        readBookFields(newBook);
         Book createdBook = bookDAO.create(newBook);
-        if(createdBook.getBookId()>0){
+        if (createdBook.getBookId() > 0) {
 //            System.out.println();
-            String message=" A book has been created successfully !";
+            String message = " A book has been created successfully !";
 //            request.setAttribute("message", message);
 
             listBooks(message);
@@ -98,28 +98,28 @@ public class BookServices {
         Book book = bookDAO.get(bookId);
         List<Category> listCategories = categoryDAO.listAll();
 
-        
 
-        request.setAttribute("book",book);
-        request.setAttribute("listCategories",book);
+        request.setAttribute("book", book);
+        request.setAttribute("listCategories", book);
 
 
-String editPage="book_form.jsp";
+        String editPage = "book_form.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
 
     }
 
     public void updateBook() throws ServletException, IOException {
-        Integer bookId = Integer.valueOf(request.getParameter("id"));
+        Integer bookId = Integer.valueOf(request.getParameter("bookId"));
         Book existBook = bookDAO.get(bookId);
-readBookFields(existBook);
-bookDAO.update(existBook);
-String message =" The book has been updated successfully !";
-listBooks(message);
+        readBookFields(existBook);
+        bookDAO.update(existBook);
+        String message = " The book has been updated successfully !";
+        listBooks(message);
 
 
     }
+
     public void readBookFields(Book book) throws ServletException, IOException {
 
         String author = request.getParameter("author");
@@ -128,7 +128,7 @@ listBooks(message);
         Float price = Float.parseFloat(request.getParameter("price"));
 
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date publishDate=null;
+        Date publishDate = null;
         try {
             publishDate = dateFormat.parse(request.getParameter("publishDate"));
 
@@ -137,7 +137,6 @@ listBooks(message);
             throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
 
         }
-
 
 
         book.setAuthor(author);
@@ -152,12 +151,10 @@ listBooks(message);
         book.setPrice(Double.valueOf(price));
 
 
-
-
         Part part = request.getPart("bookImage");
-        if(part != null && part.getSize()>0){
-            long size =part.getSize();
-            byte[] imageBytes= new byte[(int) size];
+        if (part != null && part.getSize() > 0) {
+            long size = part.getSize();
+            byte[] imageBytes = new byte[(int) size];
 
             InputStream inputStream = part.getInputStream();
             inputStream.read(imageBytes);
