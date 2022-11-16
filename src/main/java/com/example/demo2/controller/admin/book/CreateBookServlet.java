@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "/admin/create_book", value = "/CreateBookServlet")
+@MultipartConfig(fileSizeThreshold = 1024*10,maxFileSize = 1024*300,maxRequestSize = 1024*1024)
 public class CreateBookServlet extends BaseServlet {
 
 

@@ -7,9 +7,11 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -58,7 +60,7 @@ public class BookServices {
 
     }
 
-    public void createBook() throws ServletException {
+    public void createBook() throws ServletException, IOException {
         Integer categoryId = Integer.parseInt(request.getParameter("category"));
         String title = request.getParameter("title");
         String author = request.getParameter("author");
@@ -75,6 +77,17 @@ public class BookServices {
             throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
 
         }
+
+        Part part = request.getPart("bookImage");
+        if(part != null && part.getSize()>0){
+            long size =part.getSize();
+            byte[] imageBytes= new byte[(int) size];
+
+            InputStream inputStream = part.getInputStream();
+            inputStream.read(imageBytes);
+            inputStream.close();
+        }
+
 
 
     }
