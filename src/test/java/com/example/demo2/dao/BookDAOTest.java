@@ -182,4 +182,11 @@ class BookDAOTest extends JpaDAO {
 
     }
 
+    @Test
+    public void testCount() {
+        long count = bookDAO.count();
+
+        assertEquals(2,count);
+
+    }
 }
