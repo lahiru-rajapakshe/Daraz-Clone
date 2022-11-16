@@ -80,6 +80,20 @@ Edit Book
         $( "#datepicker" ).datepicker();
     } );
 
+    function showImageThubnail(fileInput) {
+        var file = fileInput.files[0];
+        var fileReader = new FileReader();
+
+        fileReader.onload=function (e){
+            $("#thumbnail").attr('src', e.target.result);
+        };
+        fileReader.readAsDataURL(file);
+
+
+
+
+        
+    }
     $(document).ready(function (){
         $("#userForm").validate({
        rules:{
