@@ -134,7 +134,14 @@ public class BookServices {
 
     }
 
-    public void editBook() {
-        
+    public void editBook() throws ServletException, IOException {
+        Integer bookId = Integer.valueOf(request.getParameter("id"));
+        Book book = bookDAO.get(bookId);
+        request.setAttribute("book",book);
+
+String editPage="book_form.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+        requestDispatcher.forward(request,response);
+
     }
 }
