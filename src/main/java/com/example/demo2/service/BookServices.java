@@ -150,4 +150,8 @@ String editPage="book_form.jsp";
         requestDispatcher.forward(request,response);
 
     }
+
+    public void updateBook() {
+        
+    }
 }
