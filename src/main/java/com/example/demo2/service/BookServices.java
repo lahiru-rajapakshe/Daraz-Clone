@@ -36,11 +36,17 @@ public class BookServices {
         bookDAO = new BookDAO(entityManager);
         categoryDAO = new CategoryDAO(entityManager);
     }
-
-    public void listBooks() throws ServletException, IOException {
+    public void listBooks() throws ServletException, IOException{
+        listBooks(null);
+    }
+    public void listBooks(String message) throws ServletException, IOException {
         List<BookDAO> listBooks =bookDAO.listAll();
         request.setAttribute("listBooks",listBooks);
 
+        if(message != null){
+            request.setAttribute("message", message);
+
+        }
         String listPage="book_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
         requestDispatcher.forward(request,response);
@@ -82,6 +88,16 @@ public class BookServices {
 
         Book newBook = new Book();
         newBook.setTitle(title);
+
+        Book existBook = bookDAO.findByTitle(title);
+        if(existBook != null){
+            String message="could not create a new book because this title already exists !";
+            listBooks(message);
+            request.setAttribute("message",message);
+            return;
+
+        }
+
         newBook.setAuthor(author);
         newBook.setDescription(description);
         newBook.setIsbn(isbn);
@@ -110,9 +126,9 @@ public class BookServices {
         if(createdBook.getBookId()>0){
 //            System.out.println();
             String message=" A book has been created successfully !";
-            request.setAttribute("message", message);
+//            request.setAttribute("message", message);
 
-            listBooks();
+            listBooks(message);
         }
 
 
