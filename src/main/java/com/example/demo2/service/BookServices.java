@@ -10,6 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class BookServices {
@@ -50,6 +54,27 @@ public class BookServices {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(newPage);
         requestDispatcher.forward(request,response);
 
+
+
+    }
+
+    public void createBook() throws ServletException {
+        Integer categoryId = Integer.parseInt(request.getParameter("category"));
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String description = request.getParameter("description");
+        String isbn = request.getParameter("isbn");
+        Float price = Float.parseFloat(request.getParameter("price"));
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date publishDate = dateFormat.parse(request.getParameter("publishDate"));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
+
+        }
 
 
     }
