@@ -11,9 +11,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "book", schema = "bookstoredb")
 @NamedQueries({
-        @NamedQuery(name = "Book.findAll",query = "SELECT b FROM  Book b"),
-        @NamedQuery(name = "Book.findAll",query = "SELECT b FROM  Book b WHERE b.title =: title"),
-        @NamedQuery(name = "Book.findAll",query = "SELECT COUNT(*) FROM  Book b "),
+        @NamedQuery(name = "Book.findAll", query = "SELECT b FROM  Book b"),
+        @NamedQuery(name = "Book.findAll", query = "SELECT b FROM  Book b WHERE b.title =: title"),
+        @NamedQuery(name = "Book.findAll", query = "SELECT COUNT(*) FROM  Book b "),
 })
 public class Book {
     private Integer bookId;
@@ -185,13 +185,14 @@ public class Book {
         this.reviewsByBookId = reviewsByBookId;
     }
 
-@Transient
-    public String getBase64Image(){
-      this.base64Image=Base64.getEncoder().encodeToString(this.image);
-      return this.base64Image;
+    @Transient
+    public String getBase64Image() {
+        this.base64Image = Base64.getEncoder().encodeToString(this.image);
+        return this.base64Image;
     }
-@Transient
-    public void setBase64Image(String base64Image){
-this.base64Image=base64Image;
+
+    @Transient
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
     }
 }
