@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -27,6 +28,7 @@ public class Book {
         this.title = title;
     }
 
+    private String base64Image;
     private String title;
     private String description;
     private String isbn;
@@ -183,5 +185,13 @@ public class Book {
         this.reviewsByBookId = reviewsByBookId;
     }
 
-
+@Transient
+    public String getBase64Image(){
+      this.base64Image=Base64.getEncoder().encodeToString(this.image);
+      return this.base64Image;
+    }
+@Transient
+    public void setBase64Image(String base64Image){
+this.base64Image=base64Image;
+    }
 }
