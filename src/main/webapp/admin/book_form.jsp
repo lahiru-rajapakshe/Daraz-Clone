@@ -9,8 +9,12 @@
 <html>
 <head>
     <title>Create New Book</title>
-    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script defer type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script defer type="text/javascript" src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script defer type="text/javascript" src="./node_modules/jquery-ui/dist/jquery-ui.js"></script>
+    <script defer type="text/javascript" src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+<%--    <script defer type="text/javascript" src="./node_modules/jquery-ui/dist/themes/"></script>--%>
+    <link rel="stylesheet" href="./node_modules/jquery-ui/dist/themes/blitzer/jquery-ui.min.css">
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
@@ -72,6 +76,10 @@ Edit Book
 
 </body>
 <script type="text/javascript">
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+
     $(document).ready(function (){
         $("#userForm").validate({
        rules:{
