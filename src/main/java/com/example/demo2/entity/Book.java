@@ -142,21 +142,6 @@ public class Book {
         this.categoryId = categoryId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book that = (Book) o;
-        return Objects.equals(bookId, that.bookId) && Objects.equals(book, that.book) && Objects.equals(author, that.author) && Objects.equals(description, that.description) && Objects.equals(isbn, that.isbn) && Arrays.equals(image, that.image) && Objects.equals(price, that.price) && Objects.equals(publishDate, that.publishDate) && Objects.equals(lastUpdateTime, that.lastUpdateTime) && Objects.equals(categoryId, that.categoryId);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(bookId, book, author, description, isbn, price, publishDate, lastUpdateTime, categoryId);
-        result = 31 * result + Arrays.hashCode(image);
-        return result;
-    }
-
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     public Category getCategoryByCategoryId() {
@@ -194,5 +179,20 @@ public class Book {
     @Transient
     public void setBase64Image(String base64Image) {
         this.base64Image = base64Image;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book1 = (Book) o;
+        return Objects.equals(bookId, book1.bookId) && Objects.equals(book, book1.book) && Objects.equals(author, book1.author) && Objects.equals(base64Image, book1.base64Image) && Objects.equals(title, book1.title) && Objects.equals(description, book1.description) && Objects.equals(isbn, book1.isbn) && Arrays.equals(image, book1.image) && Objects.equals(price, book1.price) && Objects.equals(publishDate, book1.publishDate) && Objects.equals(lastUpdateTime, book1.lastUpdateTime) && Objects.equals(categoryId, book1.categoryId) && Objects.equals(categoryByCategoryId, book1.categoryByCategoryId) && Objects.equals(orderDetailsByBookId, book1.orderDetailsByBookId) && Objects.equals(reviewsByBookId, book1.reviewsByBookId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(bookId, book, author, base64Image, title, description, isbn, price, publishDate, lastUpdateTime, categoryId, categoryByCategoryId, orderDetailsByBookId, reviewsByBookId);
+        result = 31 * result + Arrays.hashCode(image);
+        return result;
     }
 }

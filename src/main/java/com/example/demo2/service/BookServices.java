@@ -111,7 +111,12 @@ public class BookServices {
 
     public void updateBook() throws ServletException, IOException {
         Integer bookId = Integer.valueOf(request.getParameter("bookId"));
+        String title = request.getParameter("title");
+
         Book existBook = bookDAO.get(bookId);
+        Book bookByTitle = bookDAO.findByTitle(title);
+
+        if(existBook)
         readBookFields(existBook);
         bookDAO.update(existBook);
         String message = " The book has been updated successfully !";
