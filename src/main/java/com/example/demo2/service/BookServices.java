@@ -38,4 +38,8 @@ public class BookServices {
 
 
     }
+
+    public void showBookNewForm(){
+
+    }
 }
