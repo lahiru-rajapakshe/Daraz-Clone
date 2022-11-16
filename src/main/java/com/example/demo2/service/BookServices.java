@@ -2,6 +2,7 @@ package com.example.demo2.service;
 
 import com.example.demo2.dao.BookDAO;
 import com.example.demo2.dao.CategoryDAO;
+import com.example.demo2.entity.Category;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ public class BookServices {
   private EntityManager entityManager;
   private HttpServletRequest request;
   private HttpServletResponse response;
+  private CategoryDAO categoryDAO;
   private BookDAO bookDAO;
 
 
@@ -25,6 +27,7 @@ public class BookServices {
         this.response = response;
 
         bookDAO = new BookDAO(entityManager);
+        categoryDAO = new CategoryDAO(entityManager);
     }
 
     public void listBooks() throws ServletException, IOException {
@@ -39,7 +42,15 @@ public class BookServices {
 
     }
 
-    public void showBookNewForm(){
+    public void showBookNewForm() throws ServletException, IOException {
+        List<Category> listCategories =categoryDAO.listAll();
+        request.setAttribute("listCategories",listCategories);
+
+        String newPage="book_form.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(newPage);
+        requestDispatcher.forward(request,response);
+
+
 
     }
 }
