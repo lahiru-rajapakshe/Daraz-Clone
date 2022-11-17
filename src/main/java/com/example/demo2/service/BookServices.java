@@ -172,4 +172,8 @@ public class BookServices {
             book.setImage(imageBytes);
         }
     }
+
+    public void deleteBook() {
+
+    }
 }
