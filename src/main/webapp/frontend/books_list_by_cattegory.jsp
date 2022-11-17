@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<jsp:directive.include file="header.jsp" />
+<jsp:directive.include file="../admin/header.jsp" />
 
 <div align="center">
 <h2>${category.name}</h2>
