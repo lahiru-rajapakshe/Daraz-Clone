@@ -50,13 +50,14 @@ class BookDAOTest extends JpaDAO {
     void tearDown() {
     }
 
-//    @Test(expected = EntityNotFoundException.class)
+    //    @Test(expected = EntityNotFoundException.class)
     public void testGetBookFail() {
         Integer bookId = 99;
         Book book = bookDAO.get(bookId);
         assertNull(book);
     }
-//    @Test(expected = EntityNotFoundException.class)
+
+    //    @Test(expected = EntityNotFoundException.class)
     @Test
 
     public void testGetBookSuccess() {
@@ -66,6 +67,7 @@ class BookDAOTest extends JpaDAO {
 
 
     }
+
     @Test
     void testDelete() {
     }
@@ -165,8 +167,8 @@ class BookDAOTest extends JpaDAO {
     }
 
     @Test
-    public void testFindByTitleNotExist(){
-        String title="thinking in java";
+    public void testFindByTitleNotExist() {
+        String title = "thinking in java";
         Book book = bookDAO.findByTitle(title);
         System.out.println(book.getPrice());
         System.out.println(book.getAuthor());
@@ -175,8 +177,8 @@ class BookDAOTest extends JpaDAO {
     }
 
     @Test
-    public void testFindByTitleExist(){
-        String title="thinking in java 2";
+    public void testFindByTitleExist() {
+        String title = "thinking in java 2";
         Book book = bookDAO.findByTitle(title);
         assertNotNull(book);
 
@@ -185,14 +187,14 @@ class BookDAOTest extends JpaDAO {
     @Test
     public void testCount() {
         long count = bookDAO.count();
-        assertEquals(2,count);
+        assertEquals(2, count);
 
     }
 
     @Test
     public void search() {
-String keyword="Java";
+        String keyword = "Java";
         List<Book> search = bookDAO.search(keyword);
-        assertEquals(7,search.size());
+        assertEquals(7, search.size());
     }
 }
