@@ -16,22 +16,28 @@
         <img src="../images/BookstoreLogo.png" alt="Logo">
     </div>
     <div>
-        <input type="text" name="keyword" size="50">
-        <input type="button" value="search">
-        <a href="header.jsp">Sign In</a>
-        <a href="register">Register</a>
-        <a href="view_cart">Cart</a>
+        <form action="search" method="get">
+            <input type="text" name="keyword" size="50">
+            <input type="submit" value="search">
+
+
+            <a href="header.jsp">Sign In</a>
+            <a href="register">Register</a>
+            <a href="view_cart">Cart</a>
+
+        </form>
+
     </div>
     <div>&nbsp;</div>
     <div>
         <c:foreach var="category" items="${listCategory}" varStatus="status">
             <a href="view_category?id=${category.categryId}">
-            <font size="+1"><b><c:out value="${category.name}" /></b></font>
+                <font size="+1"><b><c:out value="${category.name}"/></b></font>
 
 
             </a>
-            <c:if test="${not status.last}" >
-            &nbsp; | &nbsp;
+            <c:if test="${not status.last}">
+                &nbsp; | &nbsp;
             </c:if>
         </c:foreach>
     </div>
