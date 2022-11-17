@@ -204,4 +204,11 @@ class BookDAOTest extends JpaDAO {
         List<Book> search = bookDAO.search(keyword);
         assertEquals(7, search.size());
     }
+    @Test
+    public void description() {
+        String keyword = "add your desscription here";
+        List<Book> search = bookDAO.search(keyword);
+        assertEquals(7, search.size());
+    }
+
 }
