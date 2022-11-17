@@ -188,9 +188,9 @@ public class BookServices {
         Category category = categoryDAO.get(cattegoryId);
         List<Category> listCategories = categoryDAO.listAll();
 
-        request.setAttribute("listCategories",listCategories);
-        request.setAttribute("listBooks",listBooks);
-        request.setAttribute("category",category);
+        request.setAttribute("listCategories", listCategories);
+        request.setAttribute("listBooks", listBooks);
+        request.setAttribute("category", category);
         String listPage = "frontend/books_list_by_cattegory.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
         requestDispatcher.forward(request, response);
@@ -201,8 +201,8 @@ public class BookServices {
         Integer bookId = Integer.valueOf(request.getParameter("id"));
         Book book = bookDAO.get(bookId);
         List<Category> listCategories = categoryDAO.listAll();
-        request.setAttribute("listCategories",listCategories);
-        request.setAttribute("book",book);
+        request.setAttribute("listCategories", listCategories);
+        request.setAttribute("book", book);
 
         String detailPage = "frontend/book_detail.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(detailPage);
@@ -212,14 +212,15 @@ public class BookServices {
 
     public void search() throws ServletException, IOException {
         String keyword = request.getParameter("keyword");
-        List<Book> result=null;
+        List<Book> result = null;
 
-        if(keyword.equals("")){
-result=bookDAO.listAll();
-        }else{
-result=bookDAO.search(keyword);
+        if (keyword.equals("")) {
+            result = bookDAO.listAll();
+        } else {
+            result = bookDAO.search(keyword);
         }
-        request.setAttribute("result",result);
+        request.setAttribute("keyword",keyword);
+        request.setAttribute("result", result);
         String resultPage = "frontend/search_result.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
         requestDispatcher.forward(request, response);
