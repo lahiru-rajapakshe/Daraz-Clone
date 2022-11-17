@@ -180,4 +180,7 @@ public class BookServices {
         String message = " The book has been deleted successfully !";
         listBooks(message);
     }
+
+    public void listBooksByCcategory() {
+    }
 }
