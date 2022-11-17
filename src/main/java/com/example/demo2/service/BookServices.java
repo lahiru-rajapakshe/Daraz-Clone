@@ -173,7 +173,11 @@ public class BookServices {
         }
     }
 
-    public void deleteBook() {
+    public void deleteBook() throws ServletException, IOException {
+        Integer bookId = Integer.valueOf(request.getParameter("id"));
+        bookDAO.delete(bookId);
 
+        String message = " The book has been deleted successfully !";
+        listBooks(message);
     }
 }
