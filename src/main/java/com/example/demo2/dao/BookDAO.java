@@ -55,5 +55,9 @@ super.delete(Book.class,bookId);
 
     }
 
+public List<Book> listByCategory(int categoryId){
+        return  super.findWithNamedQuery("Book.findByCategory","catId",categoryId);
 
+
+}
 }

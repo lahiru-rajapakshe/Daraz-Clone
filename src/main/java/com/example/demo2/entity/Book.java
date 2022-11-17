@@ -14,6 +14,8 @@ import java.util.Objects;
         @NamedQuery(name = "Book.findAll", query = "SELECT b FROM  Book b"),
         @NamedQuery(name = "Book.findAll", query = "SELECT b FROM  Book b WHERE b.title =: title"),
         @NamedQuery(name = "Book.findAll", query = "SELECT COUNT(*) FROM  Book b "),
+        @NamedQuery(name = "Book.findByCategory",query = "SELECT b FROM Book b JOIN Category c ON b.category.categoryId=c.categoryId AND c.categoryId =:catId")
+
 })
 public class Book {
     private Integer bookId;
