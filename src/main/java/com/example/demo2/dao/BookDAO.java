@@ -3,6 +3,7 @@ package com.example.demo2.dao;
 import com.example.demo2.entity.Book;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
@@ -57,6 +58,15 @@ super.delete(Book.class,bookId);
 
 public List<Book> listByCategory(int categoryId){
         return  super.findWithNamedQuery("Book.findByCategory","catId",categoryId);
+
+
+}
+public List<Book> listNewBooks(){
+    Query namedQuery = entityManager.createNamedQuery("Book.listNew");
+    namedQuery.setFirstResult(0);
+    namedQuery.setMaxResults(4);
+
+    return  namedQuery.getResultList();
 
 
 }

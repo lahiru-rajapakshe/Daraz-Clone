@@ -15,8 +15,25 @@
 <jsp:directive.include file="header.jsp" />
 
 <div align="center">
-    <h1>This is main Content </h1>
+
     <h1>New Books</h1>
+    <div align="center">
+        <div style="display: inline-block">
+            <c:foreach items="${listNewBooks}" var="book">
+                <a href="view_book?id${book.bookId}">
+                    <img src="data:image/jpg;base64,${book.base64Image} width="84" height="110" />
+                </a>
+                <h4>
+                    <a href="view_book?id${book.bookId}">
+                        <b>${book.title}</b>
+                    </a></h4>
+                <h4>Rating</h4>
+                <h4><i>by ${book.author}</i></h4>
+                <h4><b>${book.price}</b></h4>
+
+            </c:foreach>
+        </div>
+    </div>
     <h1>Best Selling Books</h1>
     <h1>Featured Books</h1>
 </div>
