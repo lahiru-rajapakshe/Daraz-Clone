@@ -197,6 +197,16 @@ public class BookServices {
 
     }
 
-    public void viewBookDetails() {
+    public void viewBookDetails() throws ServletException, IOException {
+        Integer bookId = Integer.valueOf(request.getParameter("id"));
+        Book book = bookDAO.get(bookId);
+        List<Category> listCategories = categoryDAO.listAll();
+        request.setAttribute("listCategories",listCategories);
+        request.setAttribute("book",book);
+
+        String detailPage = "frontend/book_detail.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(detailPage);
+        requestDispatcher.forward(request, response);
+
     }
 }
