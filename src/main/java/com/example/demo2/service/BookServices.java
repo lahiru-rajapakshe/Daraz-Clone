@@ -184,8 +184,14 @@ public class BookServices {
     public void listBooksByCcategory() throws ServletException, IOException {
         Integer cattegoryId = Integer.valueOf(request.getParameter("id"));
         List<Book> listBooks = bookDAO.listByCategory(cattegoryId);
+
+        Category category = categoryDAO.get(cattegoryId);
+        List<Category> listCategories = categoryDAO.listAll();
+
+        request.setAttribute("listCategories",listCategories);
         request.setAttribute("listBooks",listBooks);
-        String listPage = "books_list_by_cattegory.jsp";
+        request.setAttribute("category",category);
+        String listPage = "frontend/books_list_by_cattegory.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
         requestDispatcher.forward(request, response);
 
