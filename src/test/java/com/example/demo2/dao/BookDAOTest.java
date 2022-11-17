@@ -188,4 +188,9 @@ class BookDAOTest extends JpaDAO {
         assertEquals(2,count);
 
     }
+
+    @Test
+    public void search() {
+
+    }
 }

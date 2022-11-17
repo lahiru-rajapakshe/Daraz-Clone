@@ -16,18 +16,18 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
     @Override
     public Book get(Object bookId) {
 
-        return super.find(Book.class,bookId);
+        return super.find(Book.class, bookId);
     }
 
     @Override
     public void delete(Object bookId) {
-super.delete(Book.class,bookId);
+        super.delete(Book.class, bookId);
 
     }
 
     @Override
     public List<BookDAO> listAll() {
-      return super.findWithNamedQuery("Book.findAll");
+        return super.findWithNamedQuery("Book.findAll");
     }
 
     @Override
@@ -44,30 +44,37 @@ super.delete(Book.class,bookId);
     @Override
     public Book update(Book book) {
         book.setLastUpdateTime(new Date());
-        return  super.update(book);
+        return super.update(book);
     }
-    public Book findByTitle(String title){
+
+    public Book findByTitle(String title) {
         List<Book> result = super.findWithNamedQuery("Book.findByTitle", "title", title);
 
-        if(!result.isEmpty()){
+        if (!result.isEmpty()) {
             return result.get(0);
         }
-        return  null;
+        return null;
 
     }
 
-public List<Book> listByCategory(int categoryId){
-        return  super.findWithNamedQuery("Book.findByCategory","catId",categoryId);
+    public List<Book> listByCategory(int categoryId) {
+        return super.findWithNamedQuery("Book.findByCategory", "catId", categoryId);
 
 
-}
-public List<Book> listNewBooks(){
-    Query namedQuery = entityManager.createNamedQuery("Book.listNew");
-    namedQuery.setFirstResult(0);
-    namedQuery.setMaxResults(4);
+    }
 
-    return  namedQuery.getResultList();
+    public List<Book> listNewBooks() {
+        Query namedQuery = entityManager.createNamedQuery("Book.listNew");
+        namedQuery.setFirstResult(0);
+        namedQuery.setMaxResults(4);
+
+        return namedQuery.getResultList();
 
 
-}
+    }
+
+    public List<Book> search(String keyword){
+        return  super.findWithNamedQuery("Book.search","keyword",keyword);
+
+    }
 }
