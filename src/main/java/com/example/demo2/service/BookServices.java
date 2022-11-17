@@ -116,8 +116,8 @@ public class BookServices {
         Book existBook = bookDAO.get(bookId);
         Book bookByTitle = bookDAO.findByTitle(title);
 
-        if(!existBook.equals(bookByTitle)){
-            String message="could not update the book because of its already exists";
+        if (!existBook.equals(bookByTitle)) {
+            String message = "could not update the book because of its already exists";
             listBooks(message);
             return;
         }
