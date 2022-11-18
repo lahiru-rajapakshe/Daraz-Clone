@@ -11,12 +11,12 @@ import java.io.IOException;
 @WebServlet(name = "/admin/update_book", value = "/UpdateBookServlet")
 @MultipartConfig(fileSizeThreshold = 1024*10,maxFileSize = 1024*300,maxRequestSize = 1024*1024)
 
-public class UpdateBookServlet extends BaseServlet {
+public class UpdateBookServlet extends HttpServlet {
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookServices bookServices = new BookServices(entityManager, request, response);
+        BookServices bookServices = new BookServices( request, response);
         bookServices.updateBook();
     }
 }
