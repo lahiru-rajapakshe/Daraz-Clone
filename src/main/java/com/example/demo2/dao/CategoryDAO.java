@@ -17,8 +17,8 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
         return super.update(category);
     }
 
-    public CategoryDAO(EntityManager entityManager) {
-        super(entityManager);
+    public CategoryDAO() {
+
     }
 
     @Override

@@ -185,9 +185,8 @@ super();
         List<Book> listBooks = bookDAO.listByCategory(cattegoryId);
 
         Category category = categoryDAO.get(cattegoryId);
-        List<Category> listCategories = categoryDAO.listAll();
 
-        request.setAttribute("listCategories", listCategories);
+
         request.setAttribute("listBooks", listBooks);
         request.setAttribute("category", category);
         String listPage = "frontend/books_list_by_cattegory.jsp";
@@ -199,8 +198,7 @@ super();
     public void viewBookDetails() throws ServletException, IOException {
         Integer bookId = Integer.valueOf(request.getParameter("id"));
         Book book = bookDAO.get(bookId);
-        List<Category> listCategories = categoryDAO.listAll();
-        request.setAttribute("listCategories", listCategories);
+
         request.setAttribute("book", book);
 
         String detailPage = "frontend/book_detail.jsp";

@@ -146,7 +146,7 @@ public class Book {
         this.categoryId = categoryId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     public Category getCategoryByCategoryId() {
         return categoryByCategoryId;
