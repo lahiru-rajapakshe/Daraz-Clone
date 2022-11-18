@@ -38,7 +38,12 @@ class CustomerDAOTest extends JpaDAO {
     }
 
     @Test
-    void get() {
+    public void get() {
+        Integer customerId=1;
+        Customer customer = customerDAO.get(customerId);
+        assertNotNull(customer);
+
+
     }
 
     @Test
