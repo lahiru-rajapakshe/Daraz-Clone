@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
-    public BookDAO(EntityManager entityManager) {
-        super(entityManager);
+    public BookDAO() {
+        super();
     }
 
     @Override
@@ -76,5 +76,9 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
     public List<Book> search(String keyword){
         return  super.findWithNamedQuery("Book.search","keyword",keyword);
 
+    }
+
+    public long countByCategory(int categoryId){
+   return  super.countWithNamedQuery("Book.countByCategory","catId",categoryId);
     }
 }

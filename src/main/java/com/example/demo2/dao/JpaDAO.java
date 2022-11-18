@@ -133,10 +133,26 @@ public class JpaDAO<E> {
 
 
     }
+
+    public long contWithNamedQuery(String queryName, String paramName, Object paramValue) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        Query query = session.createNamedQuery(queryName);
+
+        long  result=(long) query.getSingleResult();
+        entityManager.close();
+
+        return result;
+
+
+    }
+
     public void close (){
         iff(entityManagerFactory != null){
 
             entityManagerFactory.close();;
         }
     }
+
+
 }
