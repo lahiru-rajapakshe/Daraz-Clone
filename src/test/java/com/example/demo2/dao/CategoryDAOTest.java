@@ -21,8 +21,7 @@ class CategoryDAOTest extends JpaDAO {
 
     @BeforeClass
     public static void setupBeforeClass() throws Exception {
-        BaseDAOTest.setupBeforeClass();
-        categoryDAO = new CategoryDAO(entityManager);
+      categoryDAO.close();
     }
 
     @BeforeEach
