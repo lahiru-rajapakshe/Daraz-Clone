@@ -9,10 +9,10 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "/admin/edit_category", value = "/EditCategoryServlet")
-public class EditCategoryServlet extends BaseServlet {
+public class EditCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryServices categoryServices = new CategoryServices(entityManager,request,response);
+        CategoryServices categoryServices = new CategoryServices(request,response);
         categoryServices.editCategory();
 
 
