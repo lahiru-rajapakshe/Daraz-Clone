@@ -9,12 +9,12 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "/admin/update_user", value = "/UpdateUserServlet")
-public class UpdateUserServlet extends BaseServlet {
+public class UpdateUserServlet extends HttpServlet {
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserServices userServices = new UserServices(entityManager,request, response);
+        UserServices userServices = new UserServices(request, response);
         userServices.updateUser();
     }
 }
