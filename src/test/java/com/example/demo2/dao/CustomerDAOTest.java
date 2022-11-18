@@ -47,6 +47,14 @@ class CustomerDAOTest extends JpaDAO {
     }
 
     @Test
+    public void testUpdate(){
+               Customer customer=customerDAO.get(1);
+               customer.setFullName("sajhgdjhag");
+               customerDAO.update(customer);
+
+    }
+
+    @Test
     void testDelete() {
     }
 
