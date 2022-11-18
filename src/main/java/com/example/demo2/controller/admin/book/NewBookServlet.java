@@ -1,6 +1,5 @@
 package com.example.demo2.controller.admin.book;
 
-import com.example.demo2.controller.BaseServlet;
 import com.example.demo2.service.BookServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

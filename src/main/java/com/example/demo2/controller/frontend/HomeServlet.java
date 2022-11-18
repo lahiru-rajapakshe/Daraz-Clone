@@ -1,6 +1,5 @@
 package com.example.demo2.controller.frontend;
 
-import com.example.demo2.controller.BaseServlet;
 import com.example.demo2.dao.BookDAO;
 import com.example.demo2.dao.CategoryDAO;
 import com.example.demo2.entity.Book;

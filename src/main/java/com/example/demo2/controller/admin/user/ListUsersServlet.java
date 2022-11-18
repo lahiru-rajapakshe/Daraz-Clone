@@ -1,7 +1,5 @@
 package com.example.demo2.controller.admin.user;
 
-import com.example.demo2.controller.BaseServlet;
-import com.example.demo2.entity.Users;
 import com.example.demo2.service.UserServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,7 +7,6 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.List;
 
 @WebServlet(name = "/admin/list_users", value = "/ListUsersServlet")
 public class ListUsersServlet extends HttpServlet {

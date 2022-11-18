@@ -1,6 +1,5 @@
 package com.example.demo2.controller.admin.user;
 
-import com.example.demo2.controller.BaseServlet;
 import com.example.demo2.service.UserServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
