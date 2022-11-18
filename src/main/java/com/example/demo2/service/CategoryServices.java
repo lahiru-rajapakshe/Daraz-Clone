@@ -21,10 +21,9 @@ public class CategoryServices extends BaseServlet {
     private HttpServletResponse response;
 
     //Generic constructor
-    public CategoryServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
+    public CategoryServices( HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
-        this.entityManager = entityManager;
 
 
         categoryDAO = new CategoryDAO(entityManager);

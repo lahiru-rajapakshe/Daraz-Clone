@@ -68,7 +68,7 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
         namedQuery.setFirstResult(0);
         namedQuery.setMaxResults(4);
 
-        return namedQuery.getResultList();
+        return super.findWithNamedQuery("Book.listNew",0,4);
 
 
     }

@@ -27,9 +27,8 @@ public class BookServices {
     private BookDAO bookDAO;
 
 
-    public BookServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-
-        this.entityManager = entityManager;
+    public BookServices( HttpServletRequest request, HttpServletResponse response) {
+super();
         this.request = request;
         this.response = response;
 
