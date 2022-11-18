@@ -9,10 +9,10 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "/admin/delete_category", value = "/DeleteCategoryServlet")
-public class DeleteCategoryServlet extends BaseServlet {
+public class DeleteCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
+        CategoryServices categoryServices = new CategoryServices( request, response);
         categoryServices.deleteCategory();
     }
 
