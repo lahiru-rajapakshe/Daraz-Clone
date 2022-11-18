@@ -12,11 +12,11 @@ import java.sql.*;
 import java.util.List;
 
 @WebServlet(name = "/admin/list_users", value = "/ListUsersServlet")
-public class ListUsersServlet extends BaseServlet {
+public class ListUsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        UserServices userServices = new UserServices(entityManager,request, response);
+        UserServices userServices = new UserServices(request, response);
 //        List<Users> listUsers = userServices.listUser();
 //        request.setAttribute("listUsers", listUsers);
 
