@@ -170,6 +170,11 @@ public class CustomerServices {
             String message= "login failed,checkk ur rmail and password !";
             request.setAttribute("message",message);
             showLogin();
+        }else{
+            String profilePage= "/frontend/login.jsp";
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
+            requestDispatcher.forward(request,response);
+
         }
     }
 }
