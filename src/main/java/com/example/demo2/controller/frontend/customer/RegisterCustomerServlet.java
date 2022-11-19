@@ -1,4 +1,4 @@
-package com.example.demo2.controller.frontend;
+package com.example.demo2.controller.frontend.customer;
 
 import com.example.demo2.service.CustomerServices;
 import jakarta.servlet.*;

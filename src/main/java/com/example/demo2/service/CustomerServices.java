@@ -152,4 +152,12 @@ public class CustomerServices {
 
 
     }
+
+    public void showLogin() throws ServletException, IOException {
+        String loginPage="fontend/login.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPage);
+        requestDispatcher.forward(request,response);
+
+
+    }
 }
