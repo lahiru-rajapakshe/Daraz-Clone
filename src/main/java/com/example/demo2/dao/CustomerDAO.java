@@ -4,7 +4,9 @@ import com.example.demo2.entity.Customer;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer> {
     @Override
@@ -39,5 +41,18 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
             return  result.get(0);
         }
         return null;
+    }
+
+    public Customer checkLogin(String email,String password){
+        Map<String,Object> parameters=new HashMap<>();
+        parameters.put("email",email);
+        parameters.put("password",password);
+        List<Customer> reslut = super.findWithNamedQuery("Customer.checkLogin", parameters);
+
+        if(!reslut.isEmpty()){
+            return  reslut.get(0);
+        }
+
+        return  null;
     }
 }

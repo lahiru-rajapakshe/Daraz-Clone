@@ -9,7 +9,8 @@ import java.util.Objects;
 @Table(name = "customer", schema = "bookstoredb", catalog = "")
 @NamedQuery(name = "Customer.findAll",query="SELECT c from Customer c Order by c.registerDate DESC")
 @NamedQuery(name = "Customer.countAll",query="SELECT COUNT(c.email) from Customer c")
-@NamedQuery(name = "Customer.findByEmail",query="SELECT c FROM Customer c WHERE c.email=:email ")
+@NamedQuery(name = "Customer.findByEmail",query="SELECT c FROM Customer c WHERE c.email=:email "),
+@NamedQuery(name = "Customer.checkLogin",query="SELECT c FROM Customer c WHERE c.email AND c.password =:pass ")
 public class Customer {
     private Integer customerId;
     private String email;
