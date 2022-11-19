@@ -152,4 +152,34 @@ public class CustomerServices {
 
 
     }
+
+    public void showLogin() throws ServletException, IOException {
+        String loginPage="fontend/login.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPage);
+        requestDispatcher.forward(request,response);
+
+
+    }
+
+    public void doLogin() throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        Customer customer = customerDAO.checkLogin(email, password);
+        if(customer == null){
+            String message= "login failed,checkk ur rmail and password !";
+            request.setAttribute("message",message);
+            showLogin();
+        }else{
+            request.getSession().setAttribute("loggedCustomer",customer);
+            showCustomerProfile();
+
+        }
+    }
+
+    public void showCustomerProfile() throws ServletException, IOException {
+        String profilePage= "/frontend/customer_profile.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
+        requestDispatcher.forward(request,response);
+    }
 }
