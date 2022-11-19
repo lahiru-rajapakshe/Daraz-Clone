@@ -117,7 +117,7 @@ public class CustomerServices {
     public void deleteCustomers() throws ServletException, IOException {
         Integer id = Integer.parseInt(request.getParameter("id"));
         customerDAO.delete(id);
-        String message="Customer dleted successfully !";
+        String message = "Customer dleted successfully !";
         listCustomers(message);
 
 
