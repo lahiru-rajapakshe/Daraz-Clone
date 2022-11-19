@@ -171,7 +171,7 @@ public class CustomerServices {
             request.setAttribute("message",message);
             showLogin();
         }else{
-            String profilePage= "/frontend/login.jsp";
+            String profilePage= "/frontend/customer_profile.jsp";
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
             requestDispatcher.forward(request,response);
 
