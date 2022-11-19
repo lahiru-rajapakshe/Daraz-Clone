@@ -52,18 +52,9 @@ public class CustomerServices {
             String message = " could not create a new  customer " + email + " has resgisterded a another user ";
             listCustomers(message);
         } else {
-            String fullName = request.getParameter("fullName");
-            String password = request.getParameter("password");
-            String phone = request.getParameter("phonee");
-
-            // you need to get these items from the db
-
             Customer newCustomer = new Customer();
 
-            newCustomer.setPassword(password);
-            newCustomer.setFullName(fullName);
-            newCustomer.setPhone(phone);
-
+            updateCustomerFields(newCustomer);
             customerDAO.create(newCustomer);
 
             String message = "new customer has been registered successfuly !";
@@ -71,6 +62,45 @@ public class CustomerServices {
 
         }
 
+
+    }
+
+    String message = "";
+
+    public void registerCustomer() throws ServletException, IOException {
+        String email = request.getParameter("email");
+        Customer byEmail = customerDAO.findByEmail(email);
+        if (byEmail != null) {
+            String message = " could not register a new  customer " + email + " has resgisterded a another user ";
+            listCustomers(message);
+        } else {
+            Customer updatedCustomer = new Customer();
+
+            updateCustomerFields(updatedCustomer);
+            customerDAO.create(updatedCustomer);
+
+            message = "new customer has been registered successfuly !";
+
+
+        }
+        String messagePage = "message.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
+        request.setAttribute("message", message);
+        requestDispatcher.forward(request, response);
+
+    }
+    private void updateCustomerFields(Customer customer){
+        String fullName = request.getParameter("fullName");
+        String password = request.getParameter("password");
+        String phone = request.getParameter("phonee");
+
+        // you need to get these items from the db
+
+        Customer newCustomer = new Customer();
+
+        newCustomer.setPassword(password);
+        newCustomer.setFullName(fullName);
+        newCustomer.setPhone(phone);
 
     }
 
