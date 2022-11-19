@@ -87,6 +87,9 @@ assertNull(customer);
     }
 
     @Test
-    void count() {
+    public  void count() {
+long totalCustomers=  customerDAO.count();
+assertEquals(2, totalCustomers);
+
     }
 }

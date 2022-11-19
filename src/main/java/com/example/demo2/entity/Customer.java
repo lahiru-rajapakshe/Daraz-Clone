@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "customer", schema = "bookstoredb", catalog = "")
 @NamedQuery(name = "Customer.findAll",query="SELECT c from Customer c Order by c.registerDate DESC")
+@NamedQuery(name = "Customer.countAll",query="SELECT COUNT(c.email) from Customer c")
 public class Customer {
     private Integer customerId;
     private String email;
