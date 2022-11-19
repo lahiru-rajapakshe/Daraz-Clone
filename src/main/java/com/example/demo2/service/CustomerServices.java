@@ -73,4 +73,15 @@ public class CustomerServices {
 
 
     }
+
+    public void editCustomers() throws ServletException, IOException {
+        Integer customerId = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerDAO.get(customerId);
+
+        request.setAttribute("customer",customer);
+        String editPage="customer_form.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+        requestDispatcher.forward(request,response);
+
+    }
 }
