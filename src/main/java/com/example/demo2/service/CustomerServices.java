@@ -22,7 +22,12 @@ public class CustomerServices {
         this.customerDAO = new CustomerDAO();
     }
 
-    public void listCustomers() throws ServletException, IOException {
+    public void listCustomers( String message ) throws ServletException, IOException {
+
+        if(message!= null){
+            request.setAttribute("message", message);
+
+        }
         CustomerDAO customerDAO = new CustomerDAO();
         List<Customer> listCustomer = customerDAO.listAll();
 
@@ -34,9 +39,38 @@ public class CustomerServices {
 
 
     }
+    public void listCustomers( ) throws ServletException, IOException {
+        listCustomers(null);
 
-    public void createCustomer() {
+
+
+
+
+    }
+
+    public void createCustomer() throws ServletException, IOException {
         String email = request.getParameter("email");
+        Customer byEmail =customerDAO.findByEmail(email);
+        if(byEmail != null){
+            String message= " could not create a new  customer "+email +" has resgisterded a another user ";
+listCustomers(message);
+        }else{
+            String fullName = request.getParameter("fullName");
+            String password = request.getParameter("password");
+            String phone = request.getParameter("phonee");
+
+            // you need to get these items from the db
+
+            Customer newCustomer = new Customer();
+
+            newCustomer.setPassword(password);
+            newCustomer.setFullName(fullName);
+            newCustomer.setPhone(phone);
+
+            customerDAO.create(newCustomer);
+
+        }
+
 
     }
 }
