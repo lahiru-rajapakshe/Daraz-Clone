@@ -52,18 +52,9 @@ public class CustomerServices {
             String message = " could not create a new  customer " + email + " has resgisterded a another user ";
             listCustomers(message);
         } else {
-            String fullName = request.getParameter("fullName");
-            String password = request.getParameter("password");
-            String phone = request.getParameter("phonee");
-
-            // you need to get these items from the db
-
             Customer newCustomer = new Customer();
 
-            newCustomer.setPassword(password);
-            newCustomer.setFullName(fullName);
-            newCustomer.setPhone(phone);
-
+            updateCustomerFields(newCustomer);
             customerDAO.create(newCustomer);
 
             String message = "new customer has been registered successfuly !";
@@ -83,19 +74,10 @@ public class CustomerServices {
             String message = " could not register a new  customer " + email + " has resgisterded a another user ";
             listCustomers(message);
         } else {
-            String fullName = request.getParameter("fullName");
-            String password = request.getParameter("password");
-            String phone = request.getParameter("phonee");
+            Customer updatedCustomer = new Customer();
 
-            // you need to get these items from the db
-
-            Customer newCustomer = new Customer();
-
-            newCustomer.setPassword(password);
-            newCustomer.setFullName(fullName);
-            newCustomer.setPhone(phone);
-
-            customerDAO.create(newCustomer);
+            updateCustomerFields(updatedCustomer);
+            customerDAO.create(updatedCustomer);
 
             message = "new customer has been registered successfuly !";
 
@@ -105,6 +87,20 @@ public class CustomerServices {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
         request.setAttribute("message", message);
         requestDispatcher.forward(request, response);
+
+    }
+    private void updateCustomerFields(Customer customer){
+        String fullName = request.getParameter("fullName");
+        String password = request.getParameter("password");
+        String phone = request.getParameter("phonee");
+
+        // you need to get these items from the db
+
+        Customer newCustomer = new Customer();
+
+        newCustomer.setPassword(password);
+        newCustomer.setFullName(fullName);
+        newCustomer.setPhone(phone);
 
     }
 
