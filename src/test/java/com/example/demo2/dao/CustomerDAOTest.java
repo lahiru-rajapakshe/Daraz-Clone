@@ -92,4 +92,12 @@ class CustomerDAOTest extends JpaDAO {
         assertEquals(2, totalCustomers);
 
     }
+
+    @Test
+    public void testFindByEmail(){
+        String email="some @gmail.com";
+        Customer byEmail = customerDAO.findByEmail(email);
+        assertNotNull(byEmail);
+
+    }
 }
