@@ -74,6 +74,40 @@ public class CustomerServices {
 
     }
 
+    String message = "";
+
+    public void registerCustomer() throws ServletException, IOException {
+        String email = request.getParameter("email");
+        Customer byEmail = customerDAO.findByEmail(email);
+        if (byEmail != null) {
+            String message = " could not register a new  customer " + email + " has resgisterded a another user ";
+            listCustomers(message);
+        } else {
+            String fullName = request.getParameter("fullName");
+            String password = request.getParameter("password");
+            String phone = request.getParameter("phonee");
+
+            // you need to get these items from the db
+
+            Customer newCustomer = new Customer();
+
+            newCustomer.setPassword(password);
+            newCustomer.setFullName(fullName);
+            newCustomer.setPhone(phone);
+
+            customerDAO.create(newCustomer);
+
+            message = "new customer has been registered successfuly !";
+
+
+        }
+        String messagePage = "message.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
+        request.setAttribute("message", message);
+        requestDispatcher.forward(request, response);
+
+    }
+
     public void editCustomers() throws ServletException, IOException {
         Integer customerId = Integer.parseInt(request.getParameter("id"));
         Customer customer = customerDAO.get(customerId);
