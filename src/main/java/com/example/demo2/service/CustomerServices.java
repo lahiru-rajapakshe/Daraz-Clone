@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CustomerServices {
+    CustomerDAO customerDAO ;
     private HttpServletRequest request;
     private HttpServletResponse response;
 
@@ -18,6 +19,7 @@ public class CustomerServices {
         super();
         this.request = request;
         this.response = response;
+        this.customerDAO = new CustomerDAO();
     }
 
     public void listCustomers() throws ServletException, IOException {
@@ -34,6 +36,7 @@ public class CustomerServices {
     }
 
     public void createCustomer() {
-        
+        String email = request.getParameter("email");
+
     }
 }
