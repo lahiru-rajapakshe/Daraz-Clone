@@ -66,10 +66,59 @@ public class CustomerServices {
 
             customerDAO.create(newCustomer);
 
-            String message= "new customer has been registered successfuly !";
+            String message = "new customer has been registered successfuly !";
             listCustomers(message);
 
         }
+
+
+    }
+
+    public void editCustomers() throws ServletException, IOException {
+        Integer customerId = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerDAO.get(customerId);
+
+        request.setAttribute("customer", customer);
+        String editPage = "customer_form.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+        requestDispatcher.forward(request, response);
+
+    }
+
+    public void updateCustomer() throws ServletException, IOException {
+        Integer customerId = Integer.parseInt(request.getParameter("id"));
+        String email = request.getParameter("email");
+
+        Customer existCustomer = customerDAO.get(customerId);
+        String message = null;
+        if (existCustomer != null && existCustomer.getCustomerId() != customerId) {
+            message = " Could not update the cusomer " + customerId + " bcoz ther is an existing customer with the same email";
+
+        } else {
+            String fullName = request.getParameter("fullName");
+            String password = request.getParameter("password");
+            String phone = request.getParameter("phonee");
+
+            // you need to get these items from the db
+
+            Customer updatedCustomer = new Customer();
+
+            updatedCustomer.setPassword(password);
+            updatedCustomer.setFullName(fullName);
+            updatedCustomer.setPhone(phone);
+
+            customerDAO.update(updatedCustomer);
+
+            message = " The customer has been updated successfully !";
+        }
+        listCustomers(message);
+    }
+
+    public void deleteCustomers() throws ServletException, IOException {
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        customerDAO.delete(id);
+        String message = "Customer dleted successfully !";
+        listCustomers(message);
 
 
     }
