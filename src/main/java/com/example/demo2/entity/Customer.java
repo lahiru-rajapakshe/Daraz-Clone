@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "customer", schema = "bookstoredb", catalog = "")
+@NamedQuery(name = "Customer.findAll",query="SELECT c from Customer c Order by c.registerDate DESC")
 public class Customer {
     private Integer customerId;
     private String email;

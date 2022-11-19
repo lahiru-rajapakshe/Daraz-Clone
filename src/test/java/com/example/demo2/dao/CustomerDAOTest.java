@@ -3,6 +3,8 @@ package com.example.demo2.dao;
 import com.example.demo2.entity.Customer;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerDAOTest extends JpaDAO {
@@ -72,7 +74,16 @@ assertNull(customer);
     }
 
     @Test
-    void listAll() {
+    public  void listAll() {
+        List<Customer> listCustomer = customerDAO.listAll();
+
+        for (Customer customer:listCustomer
+             ) {
+            System.out.println(customer.getFullName());
+
+        }
+        assertFalse(listCustomer.isEmpty());
+
     }
 
     @Test

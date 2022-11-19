@@ -27,6 +27,7 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
 
     @Override
     public List<BookDAO> listAll() {
+
         return super.findWithNamedQuery("Book.findAll");
     }
 

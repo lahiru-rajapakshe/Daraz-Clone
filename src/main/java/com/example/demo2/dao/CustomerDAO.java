@@ -25,7 +25,8 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
 
     @Override
     public List listAll() {
-        return null;
+
+        return super.findWithNamedQuery("Customer.findAll");
     }
 
     @Override
