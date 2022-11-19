@@ -60,7 +60,15 @@ class CustomerDAOTest extends JpaDAO {
     }
 
     @Test
-    void testDelete() {
+    public void testDelete() {
+        Integer customerId= 1;
+        customerDAO.delete(customerId);
+//        customerDAO.delete(customerId);
+        Customer customer =customerDAO.get(1);
+//        assertNull;
+assertNull(customer);
+
+
     }
 
     @Test
