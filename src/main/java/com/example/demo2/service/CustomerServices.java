@@ -161,6 +161,15 @@ public class CustomerServices {
 
     }
 
-    public void doLogin() {
+    public void doLogin() throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        Customer customer = customerDAO.checkLogin(email, password);
+        if(customer == null){
+            String message= "login failed,checkk ur rmail and password !";
+            request.setAttribute("message",message);
+            showLogin();
+        }
     }
 }
