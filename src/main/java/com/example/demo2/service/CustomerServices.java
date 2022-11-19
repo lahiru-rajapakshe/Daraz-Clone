@@ -90,9 +90,9 @@ public class CustomerServices {
         String email = request.getParameter("email");
 
         Customer existCustomer = customerDAO.get(customerId);
-String message=null;
+        String message = null;
         if (existCustomer != null && existCustomer.getCustomerId() != customerId) {
-             message = " Could not update the cusomer " + customerId + " bcoz ther is an existing customer with the same email";
+            message = " Could not update the cusomer " + customerId + " bcoz ther is an existing customer with the same email";
 
         } else {
             String fullName = request.getParameter("fullName");
@@ -109,8 +109,12 @@ String message=null;
 
             customerDAO.update(updatedCustomer);
 
-             message =" The customer has been updated successfully !";
+            message = " The customer has been updated successfully !";
         }
         listCustomers(message);
+    }
+
+    public void deleteCustomers() {
+        
     }
 }
