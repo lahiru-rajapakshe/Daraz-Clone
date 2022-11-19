@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CustomerServices {
-    CustomerDAO customerDAO ;
+    CustomerDAO customerDAO;
     private HttpServletRequest request;
     private HttpServletResponse response;
 
@@ -22,39 +22,36 @@ public class CustomerServices {
         this.customerDAO = new CustomerDAO();
     }
 
-    public void listCustomers( String message ) throws ServletException, IOException {
+    public void listCustomers(String message) throws ServletException, IOException {
 
-        if(message!= null){
+        if (message != null) {
             request.setAttribute("message", message);
 
         }
         CustomerDAO customerDAO = new CustomerDAO();
         List<Customer> listCustomer = customerDAO.listAll();
 
-        request.setAttribute("listCustomer",listCustomer);
-        String listPage="custtomer_list.jsp";
+        request.setAttribute("listCustomer", listCustomer);
+        String listPage = "custtomer_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-        requestDispatcher.forward(request,response);
-
+        requestDispatcher.forward(request, response);
 
 
     }
-    public void listCustomers( ) throws ServletException, IOException {
+
+    public void listCustomers() throws ServletException, IOException {
         listCustomers(null);
-
-
-
 
 
     }
 
     public void createCustomer() throws ServletException, IOException {
         String email = request.getParameter("email");
-        Customer byEmail =customerDAO.findByEmail(email);
-        if(byEmail != null){
-            String message= " could not create a new  customer "+email +" has resgisterded a another user ";
-listCustomers(message);
-        }else{
+        Customer byEmail = customerDAO.findByEmail(email);
+        if (byEmail != null) {
+            String message = " could not create a new  customer " + email + " has resgisterded a another user ";
+            listCustomers(message);
+        } else {
             String fullName = request.getParameter("fullName");
             String password = request.getParameter("password");
             String phone = request.getParameter("phonee");
@@ -68,6 +65,9 @@ listCustomers(message);
             newCustomer.setPhone(phone);
 
             customerDAO.create(newCustomer);
+
+            String message= "new customer has been registered successfuly !";
+            listCustomers(message);
 
         }
 
