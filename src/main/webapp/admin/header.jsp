@@ -24,7 +24,7 @@
 
     <div >
 
-        <a href="user_list.jsp"><img src="../images/Customers.png" alt="Customers"> Customers</a> |
+        <a href="list_customer.jsp"><img src="../images/Customers.png" alt="Customers"> Customers</a> |
     </div>
 
 
