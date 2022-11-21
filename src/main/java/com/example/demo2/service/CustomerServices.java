@@ -188,4 +188,8 @@ public class CustomerServices {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
         requestDispatcher.forward(request,response);
     }
+
+    public void updateCustomerProfile() {
+        
+    }
 }
