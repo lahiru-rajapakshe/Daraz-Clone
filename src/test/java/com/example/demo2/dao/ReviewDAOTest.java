@@ -20,7 +20,12 @@ public  static void setupBeforeClass() throws Exception{
 
 
     @Test
-    void get() {
+    public void get(Review reviewId) {
+
+Integer reviewId=1;
+        Review review = reviewDAO.get(reviewId);
+        assertNotNull(review);
+
     }
 
     @Test
