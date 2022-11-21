@@ -89,16 +89,23 @@ public class CustomerServices {
         requestDispatcher.forward(request, response);
 
     }
-    private void updateCustomerFields(Customer customer){
+
+    private void updateCustomerFields(Customer customer) {
         String fullName = request.getParameter("fullName");
         String password = request.getParameter("password");
         String phone = request.getParameter("phonee");
+        String email = request.getParameter("email");
 
         // you need to get these items from the db
-
         Customer newCustomer = new Customer();
+        if (email == null &&  !email.equals("")) {
+            newCustomer.setEmail(email);
+        }
 
-        newCustomer.setPassword(password);
+        if (password == null &&  !email.password("")) {
+
+            newCustomer.setPassword(password);
+        }
         newCustomer.setFullName(fullName);
         newCustomer.setPhone(phone);
 
@@ -154,9 +161,9 @@ public class CustomerServices {
     }
 
     public void showLogin() throws ServletException, IOException {
-        String loginPage="fontend/login.jsp";
+        String loginPage = "fontend/login.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(loginPage);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
 
 
     }
@@ -166,30 +173,33 @@ public class CustomerServices {
         String password = request.getParameter("password");
 
         Customer customer = customerDAO.checkLogin(email, password);
-        if(customer == null){
-            String message= "login failed,checkk ur rmail and password !";
-            request.setAttribute("message",message);
+        if (customer == null) {
+            String message = "login failed,checkk ur rmail and password !";
+            request.setAttribute("message", message);
             showLogin();
-        }else{
-            request.getSession().setAttribute("loggedCustomer",customer);
+        } else {
+            request.getSession().setAttribute("loggedCustomer", customer);
             showCustomerProfile();
 
         }
     }
 
     public void showCustomerProfile() throws ServletException, IOException {
-        String profilePage= "/frontend/customer_profile.jsp";
+        String profilePage = "/frontend/customer_profile.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 
     public void showCustomerProfileEditForm() throws ServletException, IOException {
-        String profilePage= "/frontend/edit_profile.jsp";
+        String profilePage = "/frontend/edit_profile.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 
-    public void updateCustomerProfile() {
-        
+    public void updateCustomerProfile() throws ServletException, IOException {
+        Customer loggedCustomer = (Customer) request.getSession().getAttribute("loggedCustomer");
+        updateCustomerFields(loggedCustomer);
+customerDAO.update(loggedCustomer);
+showCustomerProfile();
     }
 }
