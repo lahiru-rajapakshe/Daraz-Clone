@@ -14,11 +14,11 @@ public class CustomerLoginFilter implements Filter {
             "/view_profile","/edit_profile","/update_profile"
     };
 
-    private boolean isLoginRequired(String requesttUrl)
+    private boolean isLoginRequired(String requestUrl)
     {
         for (String loggingUrl: LoginRequiredURLs)
               {
-                  if (requesttUrl.contains(loggingUrl)){
+                  if (requestUrl.contains(loggingUrl)){
                       return true;
                   }
 
@@ -47,7 +47,7 @@ public class CustomerLoginFilter implements Filter {
         boolean loggedin =session!= null &&  session.getAttribute("loggedCustomer") != null;
 
         String requestURL = httpServletRequest.getRequestURL().toString();
-        
+
         if(!loggedin && isLoginRequired()){
             String loginPage="/frontend/login.jsp";
             RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher(loginPage);
