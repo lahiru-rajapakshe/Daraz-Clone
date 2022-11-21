@@ -9,6 +9,23 @@ import java.io.IOException;
 
 @WebFilter(filterName = "/*")
 public class CustomerLoginFilter implements Filter {
+
+    private  static final String[] LoginRequiredURLs={
+            "/view_profile","/edit_profile","/update_profile"
+    };
+
+    private boolean isLoginRequired(String requesttUrl)
+    {
+        for (String loggingUrl: LoginRequiredURLs)
+              {
+                  if (requesttUrl.contains(loggingUrl)){
+                      return true;
+                  }
+
+            
+        }
+        return  false;
+    }
     public void init(FilterConfig config) throws ServletException {
     }
 
@@ -29,7 +46,9 @@ public class CustomerLoginFilter implements Filter {
         }
         boolean loggedin =session!= null &&  session.getAttribute("loggedCustomer") != null;
 
-        if(!loggedin && path.startsWith("view_profile")){
+        String requestURL = httpServletRequest.getRequestURL().toString();
+        
+        if(!loggedin && isLoginRequired()){
             String loginPage="/frontend/login.jsp";
             RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher(loginPage);
             requestDispatcher.forward(request,response);

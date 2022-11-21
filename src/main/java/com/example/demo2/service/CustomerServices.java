@@ -98,11 +98,11 @@ public class CustomerServices {
 
         // you need to get these items from the db
         Customer newCustomer = new Customer();
-        if (email == null &&  !email.equals("")) {
+        if (email == null && !email.equals("")) {
             newCustomer.setEmail(email);
         }
 
-        if (password == null &&  !email.password("")) {
+        if (password == null && !email.password("")) {
 
             newCustomer.setPassword(password);
         }
@@ -199,7 +199,7 @@ public class CustomerServices {
     public void updateCustomerProfile() throws ServletException, IOException {
         Customer loggedCustomer = (Customer) request.getSession().getAttribute("loggedCustomer");
         updateCustomerFields(loggedCustomer);
-customerDAO.update(loggedCustomer);
-showCustomerProfile();
+        customerDAO.update(loggedCustomer);
+        showCustomerProfile();
     }
 }
