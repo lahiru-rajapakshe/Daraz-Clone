@@ -12,7 +12,6 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 
     @Override
     public Review create(Review entity) {
-        return super.create(entity);
     }
 
     @Override
