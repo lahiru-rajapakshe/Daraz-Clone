@@ -61,5 +61,17 @@ Integer reviewId=1;
     void count() {
     }
 
+    @Test
+    public void testUpdateReview(Object entity) {
+        Integer reviewId=1;
+        Review review = reviewDAO.get(reviewId);
 
+        review.setHeadline("excellent book");
+        Review updatedReview = reviewDAO.update(review);
+
+        assertEquals(review.getHeadline(),updatedReview.getHeadline());
+
+
+
+    }
 }
