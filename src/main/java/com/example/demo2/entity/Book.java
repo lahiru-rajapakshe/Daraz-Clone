@@ -200,4 +200,22 @@ public class Book {
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
+
+    @Transient
+    public float getAvarageRating(){
+        float avarageRating=0.0f;
+        float sum = 0.0f;
+
+        if(reviews.isempty()){
+            return 0.0f;
+        }
+
+        for (Review review:reviews
+             ) {
+            sum+= review.getRating();
+            
+        }
+        avarageRating=sum/reviews.size();
+        return avarageRating;
+    }
 }
