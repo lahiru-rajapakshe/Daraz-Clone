@@ -5,6 +5,8 @@ import com.example.demo2.entity.Customer;
 import com.example.demo2.entity.Review;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReviewDAOTest extends JpaDAO {
@@ -51,14 +53,27 @@ Integer reviewId=1;
 
     @Test
     void testDelete() {
+    int reviewId=2;
+    reviewDAO.delete(reviewId);
+        Review review = reviewDAO.get(reviewId);
+        assertNull(review);
     }
 
     @Test
-    void listAll() {
+    public void  testListAll() {
+        List<Review> reviews = reviewDAO.listAll();
+        assertTrue(reviews.size()>0);
+
+     
     }
 
     @Test
-    void count() {
+    public void count() {
+        long totalReviews = reviewDAO.count();
+        System.out.println("Total values "+totalReviews);
+        assertTrue(totalReviews>0);
+
+        
     }
 
     @Test

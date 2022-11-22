@@ -6,6 +6,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "review", schema = "bookstoredb", catalog = "")
+@NamedQueries({
+        @NamedQuery(name ="Review.listAll" ,query = "SELECT r FROM Review ORDER BY r.reviewTime DESC"),
+        @NamedQuery(name ="Review.countAll" ,query = "SELECT Count(r) FROM Review r")
+})
 public class Review {
     private Integer reviewId;
     private Integer bookId;
