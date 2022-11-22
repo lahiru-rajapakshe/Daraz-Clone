@@ -19,33 +19,64 @@ public class ReviewService {
         super();
         this.request = request;
         this.response = response;
-        this.reviewDAO= new ReviewDAO();
+        this.reviewDAO = new ReviewDAO();
+
+    }
+
+    //    public void listAllReview() throws ServletException, IOException {
+//        List<Review> reviews =reviewDAO.listAll();
+//        request.setAttribute("listReviews",reviews);
+//
+//
+//        String listPage="review_list.jsp";
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+//        requestDispatcher.forward(request,response);
+//
+//
+//    }
+    public void listAllReview(String message) throws ServletException, IOException {
+        List<Review> reviews = reviewDAO.listAll();
+        request.setAttribute("listReviews", reviews);
+
+        if (message != null) {
+            request.setAttribute("message", message);
+        }
+        String listPage = "review_list.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+        requestDispatcher.forward(request, response);
+
 
     }
 
     public void listAllReview() throws ServletException, IOException {
-        List<Review> reviews =reviewDAO.listAll();
-        request.setAttribute("listReviews",reviews);
-
-        String listPage="review_list.jsp";
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-        requestDispatcher.forward(request,response);
-
-
+        listAllReview(null);
     }
+
 
     public void editReview() throws ServletException, IOException {
         Integer reviewId = Integer.parseInt(request.getParameter("id"));
         Review review = reviewDAO.get(reviewId);
-        request.setAttribute("review",review);
+        request.setAttribute("review", review);
 
-        String editPage="review_form.jsp";
+        String editPage = "review_form.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
 
     }
 
     public void updateReview() {
-        
+        Integer reviewId = Integer.parseInt(request.getParameter("reviewId"));
+        String headline = request.getParameter("headline");
+        String comment = request.getParameter("comment");
+
+        Review review = reviewDAO.get(reviewId);
+        review.setHeadline(headline);
+        review.setComment(comment);
+
+        reviewDAO.update(review);
+
+        String message = "the review has been updated seccessfully !";
+
+
     }
 }
