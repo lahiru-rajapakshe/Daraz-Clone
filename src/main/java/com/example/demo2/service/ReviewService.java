@@ -64,7 +64,7 @@ public class ReviewService {
 
     }
 
-    public void updateReview() {
+    public void updateReview() throws ServletException, IOException {
         Integer reviewId = Integer.parseInt(request.getParameter("reviewId"));
         String headline = request.getParameter("headline");
         String comment = request.getParameter("comment");
@@ -77,6 +77,9 @@ public class ReviewService {
 
         String message = "the review has been updated seccessfully !";
 
+        listAllReview(message);
+    }
 
+    public void deleteReview() {
     }
 }
