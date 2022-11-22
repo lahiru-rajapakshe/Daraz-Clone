@@ -66,7 +66,7 @@ Integer reviewId=1;
     @Test
     public void count() {
         long totalReviews = reviewDAO.count();
-
+        System.out.println("Total values "+totalReviews);
         assertTrue(totalReviews>0);
 
         

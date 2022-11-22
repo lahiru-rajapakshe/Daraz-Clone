@@ -15,7 +15,8 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
     }
 
     @Override
-    public void delete(Object id) {
+    public void delete(Object reviewId) {
+super.delete(Review.class,reviewId);
 
     }
 
@@ -29,4 +30,5 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 
         return  super.contWithNamedQuery("Review.countAll");
     }
+
 }
