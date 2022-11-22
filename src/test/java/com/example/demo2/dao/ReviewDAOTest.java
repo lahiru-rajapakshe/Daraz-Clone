@@ -64,7 +64,12 @@ Integer reviewId=1;
     }
 
     @Test
-    void count() {
+    public void count() {
+        long totalReviews = reviewDAO.count();
+
+        assertTrue(totalReviews>0);
+
+        
     }
 
     @Test
