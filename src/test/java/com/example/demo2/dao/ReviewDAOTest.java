@@ -53,6 +53,10 @@ Integer reviewId=1;
 
     @Test
     void testDelete() {
+    int reviewId=2;
+    reviewDAO.delete(reviewId);
+        Review review = reviewDAO.get(reviewId);
+        assertNull(review);
     }
 
     @Test
