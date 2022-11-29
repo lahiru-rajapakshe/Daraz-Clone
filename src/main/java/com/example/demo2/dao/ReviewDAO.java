@@ -2,7 +2,9 @@ package com.example.demo2.dao;
 
 import com.example.demo2.entity.Review;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
     @Override
@@ -31,7 +33,16 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
         return super.contWithNamedQuery("Review.countAll");
     }
 
-public Review findByCustomerAnBook(int customerId,int bookId){
+public Review findByCustomerAnBook(Integer customerId,Integer bookId){
+    Map<String, Object> parameters= new HashMap<>();
+    parameters.put("customerId",customerId);
+    parameters.put("bookId",bookId);
+
+    List<Review> result = super.findWithNamedQuery("Review.findByCustomerAndBook", parameters);
+    if(!result.isEmpty()){
+        return  result.get(0);
+    }
+    return null;
 
 }
 }
