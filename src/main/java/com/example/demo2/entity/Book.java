@@ -217,5 +217,29 @@ public class Book {
         }
         avarageRating=sum/reviews.size();
         return avarageRating;
+
+
+    }
+
+    @Transient
+    public String getRatingString(float avarageRating){
+        String result="";
+        int numberOfStartsOn= (int) avarageRating;
+        for (int i = 1; i <=numberOfStartsOn ; i++) {
+            result+= "on,";
+
+        }
+        int next =numberOfStartsOn+1;
+        if(avarageRating>numberOfStartsOn){
+            result+="half,";
+            next++;
+        }
+
+        for (int i = next; i <=5 ; i++) {
+            result+="off,";
+            
+        }
+        return  result;
+
     }
 }
