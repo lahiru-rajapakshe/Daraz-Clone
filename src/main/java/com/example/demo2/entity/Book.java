@@ -200,4 +200,54 @@ public class Book {
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
+
+    @Transient
+    public float getAvarageRating(){
+        float avarageRating=0.0f;
+        float sum = 0.0f;
+
+        if(reviews.isempty()){
+            return 0.0f;
+        }
+
+        for (Review review:reviews
+             ) {
+            sum+= review.getRating();
+            
+        }
+        avarageRating=sum/reviews.size();
+        return avarageRating;
+
+
+    }
+
+    @Transient
+    public String getRatingString(float avarageRating){
+        String result="";
+        int numberOfStartsOn= (int) avarageRating;
+        for (int i = 1; i <=numberOfStartsOn ; i++) {
+            result+= "on,";
+
+        }
+        int next =numberOfStartsOn+1;
+        if(avarageRating>numberOfStartsOn){
+            result+="half,";
+            next++;
+        }
+
+        for (int i = next; i <=5 ; i++) {
+            result+="off,";
+            
+        }
+        return  result;
+
+    }
+
+    @Transient
+    public String getratingStarts(){
+        float avarageRating= getAvarageRating();
+
+        return getRatingString(avarageRating);
+
+    }
 }
