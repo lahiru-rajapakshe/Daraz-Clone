@@ -242,4 +242,12 @@ public class Book {
         return  result;
 
     }
+
+    @Transient
+    public String getratingStarts(){
+        float avarageRating= getAvarageRating();
+
+        return getRatingString(avarageRating);
+
+    }
 }
