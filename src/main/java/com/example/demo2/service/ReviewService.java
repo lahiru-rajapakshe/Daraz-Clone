@@ -1,6 +1,8 @@
 package com.example.demo2.service;
 
+import com.example.demo2.dao.BookDAO;
 import com.example.demo2.dao.ReviewDAO;
+import com.example.demo2.entity.Book;
 import com.example.demo2.entity.Review;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -90,6 +92,10 @@ public class ReviewService {
     }
 
     public void showReviewForm() throws ServletException, IOException {
+        Integer book_id = Integer.parseInt(request.getParameter("book_id"));
+        BookDAO bookDAO = new BookDAO();
+        Book book = bookDAO.get(book_id);
+        
         String targetPage="frontend/review_form.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(targetPage);
         requestDispatcher.forward(request,response);
