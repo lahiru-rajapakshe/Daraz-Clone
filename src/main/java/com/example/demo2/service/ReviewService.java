@@ -94,11 +94,15 @@ public class ReviewService {
     public void showReviewForm() throws ServletException, IOException {
         Integer book_id = Integer.parseInt(request.getParameter("book_id"));
         BookDAO bookDAO = new BookDAO();
-        Book book = bookDAO.get(book_id);
-        
+        bookDAO.get(book_id)
+
         String targetPage="frontend/review_form.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(targetPage);
         requestDispatcher.forward(request,response);
 
+    }
+
+    public void submitReview() {
+        
     }
 }
