@@ -9,6 +9,8 @@ import java.util.Objects;
 @NamedQueries({
         @NamedQuery(name ="Review.listAll" ,query = "SELECT r FROM Review ORDER BY r.reviewTime DESC"),
         @NamedQuery(name ="Review.countAll" ,query = "SELECT Count(r) FROM Review r")
+        @NamedQuery(name ="Review.customer" ,
+                query = "SELECT r FROM Review r WHERE r.customer.customerId =: customerId AND r.book.bookId =: bookId")
 })
 public class Review {
     private Integer reviewId;

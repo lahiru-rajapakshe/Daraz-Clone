@@ -7,7 +7,7 @@ import java.util.List;
 public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
     @Override
     public Review get(Object reviewId) {
-        return super.find(Review.class,reviewId)
+        return super.find(Review.class, reviewId)
     }
 
     @Override
@@ -16,7 +16,7 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 
     @Override
     public void delete(Object reviewId) {
-super.delete(Review.class,reviewId);
+        super.delete(Review.class, reviewId);
 
     }
 
@@ -28,7 +28,10 @@ super.delete(Review.class,reviewId);
     @Override
     public long count() {
 
-        return  super.contWithNamedQuery("Review.countAll");
+        return super.contWithNamedQuery("Review.countAll");
     }
 
+public Review findByCustomerAnBook(int customerId,int bookId){
+
+}
 }
